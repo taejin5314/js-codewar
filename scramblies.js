@@ -4,10 +4,11 @@ function scramble(str1, str2) {
     for (let j = 0; j < temp1.join().length; j++) {
       if (temp1[j] === temp2[i]) {
         temp2[i] = '';
+        i === 0 ? i = 0 : i--;
         temp1[j] = '';
-        i--;
-        j--;
-        console.log(temp2.join(''), j)
+        j === 0 ? j = 0 : j--;
+        console.log(temp2.join(''), i, j)
+        break;
       }
     }
   }
