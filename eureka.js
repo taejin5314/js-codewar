@@ -1,9 +1,14 @@
 function sumDigPow(a, b) {
-  // Your code here
-  let arr = [a.toString().length, b.toString().length];
+  let arr = [];
   for (let i = a; i <= b; i++) {
+    let eureka = 0, index = 0;
+    for (const j of i.toString()) {
+      index++;
+      eureka += Math.pow(parseInt(j), index);
+    }
+    if (eureka === i) arr.push(i);
   }
-  console.log(arr);
+  return arr;
 }
 
 console.log(sumDigPow(1, 10), [1, 2, 3, 4, 5, 6, 7, 8, 9])
