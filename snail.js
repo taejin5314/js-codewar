@@ -1,23 +1,24 @@
 snail = function (array) {
-  let arr = [], a = 0, b = 0;
+  let arr = [], a = 0, b = -1;
   const arrayLength = array.length;
+  if (array[0][0] === undefined) return arr;
   for (let i = arrayLength * 2 - 1; i >= 1; i--) {
     let direction = (arrayLength * 2 - 1 - i) % 4
     for (let j = 0; j < Math.ceil(i / 2); j++) {
-      arr.push(array[a][b]);
-      if (direction === 0) {
+      if (direction === 0 && b < arrayLength - 1) {
         // going right
         b++;
-      } else if (direction === 1) {
+      } else if (direction === 1 && a < arrayLength - 1) {
         // going down
         a++;
-      } else if (direction === 2) {
+      } else if (direction === 2 && b > 0) {
         // going left
         b--;
-      } else if (direction === 3) {
+      } else if (direction === 3 && a > 0) {
         // going up
         a--;
       }
+      arr.push(array[a][b]);
     }
   }
   return arr;
