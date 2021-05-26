@@ -1,5 +1,9 @@
 function sumDigPow(a, b) {
   // Your code here
+  let arr = [a.toString().length, b.toString().length];
+  for (let i = a; i <= b; i++) {
+  }
+  console.log(arr);
 }
 
 console.log(sumDigPow(1, 10), [1, 2, 3, 4, 5, 6, 7, 8, 9])
