@@ -1,13 +1,13 @@
 function scramble(str1, str2) {
   let temp1 = str1.split(''), temp2 = str2.split('');
-  for (let i = 0; i < temp2.join().length; i++) {
-    for (let j = 0; j < temp1.join().length; j++) {
+  for (let i = 0; i < str2.length; i++) {
+    for (let j = 0; j < str1.length; j++) {
       if (temp1[j] === temp2[i]) {
         temp2[i] = '';
-        i === 0 ? i = 0 : i--;
+        // i === 0 ? i = 0 : i--;
         temp1[j] = '';
-        j === 0 ? j = 0 : j--;
-        console.log(temp2.join(''), i, j)
+        // j === 0 ? j = 0 : j--;
+        // console.log(temp2.join(''), i, j)
         break;
       }
     }
