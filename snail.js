@@ -1,5 +1,26 @@
 snail = function (array) {
-  // enjoy
+  let arr = [], a = 0, b = 0;
+  const arrayLength = array.length;
+  for (let i = arrayLength * 2 - 1; i >= 1; i--) {
+    let direction = (arrayLength * 2 - 1 - i) % 4
+    for (let j = 0; j < Math.ceil(i / 2); j++) {
+      arr.push(array[a][b]);
+      if (direction === 0) {
+        // going right
+        b++;
+      } else if (direction === 1) {
+        // going down
+        a++;
+      } else if (direction === 2) {
+        // going left
+        b--;
+      } else if (direction === 3) {
+        // going up
+        a--;
+      }
+    }
+  }
+  return arr;
 }
 
 console.log(snail([[]]), []);
