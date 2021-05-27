@@ -18,7 +18,6 @@ function parseInt(string) {
   const numberArray = string.split(' ');
   for (let i = 0; i < numberArray.length; i++) {
     if (translateToNumber(numberArray[i]) === null) {
-      // result[i - 1] = translateToNumber(numberArray[i - 1]) * multiMap[numberArray[i]];
       total *= multiMap[numberArray[i]];
     }
     else total += translateToNumber(numberArray[i]);
