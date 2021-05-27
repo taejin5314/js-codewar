@@ -5,9 +5,19 @@ function determinant(m) {
     return m[0][0] * m[1][1] - m[0][1] * m[1][0];
   } else if (m[0].length > 2) {
     for (let i = 0; i < m[0].length; i++) {
-
-      result += m[0][i] * 
+      let newMatrix = [];
+      for (let j = 1; j < m.length; j++) {
+        let newArray = [];
+        for (let k = 0; k < m[0].length; k++) {
+          if (k != i) {
+            newArray.push(m[j][k]);
+          }
+        }
+        newMatrix.push(newArray);
+      }
+      result += m[0][i] * determinant(newMatrix) * Math.pow(-1, i);
     }
+    return result;
   }
 };
 
