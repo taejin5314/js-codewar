@@ -7,6 +7,7 @@ function sudoku(puzzle) {
 
 function fillInEmpty(elm, emptyArray, puzzle) {
   let row = [], solvedPuzzle = [];
+  console.log(elm);
   if (elm === emptyArray.length) {
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
