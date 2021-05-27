@@ -1,26 +1,40 @@
-let column;
+// let column;
 
 function longestSlideDown(pyramid) {
-  let sum = 0;
-  if (pyramid.length === 1) return pyramid[0][0];
-  else if (pyramid.length === 2) {
-    if (pyramid[0][0] + pyramid[1][0] < pyramid[0][0] + pyramid[1][1]) {
-      column = 1;
-      return pyramid[0][0] + pyramid[1][1];
+  // let sum = 0;
+  // if (pyramid.length === 1) return pyramid[0][0];
+  // else if (pyramid.length === 2) {
+  //   if (pyramid[0][0] + pyramid[1][0] < pyramid[0][0] + pyramid[1][1]) {
+  //     column = 1;
+  //     return pyramid[0][0] + pyramid[1][1];
+  //   }
+  //   else {
+  //     column = 0;
+  //     return pyramid[0][0] + pyramid[1][0];
+  //   }
+  // } else if (pyramid.length > 2) {
+  //   sum = longestSlideDown(pyramid.slice(0, pyramid.length - 1));
+  //   for (let i = pyramid.length - 1; i < pyramid.length; i++) {
+  //     if (sum + pyramid[i][column] < sum + pyramid[i][column + 1]) {
+  //       column++;
+  //       return sum + pyramid[i][column];
+  //     } else return sum + pyramid[i][column];
+  //   }
+  // } else return false;
+
+  let pyramidSum = [];
+  pyramid.forEach((r, i) => {
+    pyramidSum.push(r.map((e) => {
+      return (i === pyramid.length - 1) ? e : 0;
+    }));
+  });
+
+  for (let i = pyramidSum.length - 2; i >= 0; i--) {
+    for (let j = 0; j < pyramidSum[i].length; j++) {
+      pyramidSum[i][j] = pyramid[i][j] + Math.max(pyramidSum[i + 1][j], pyramidSum[i + 1][j + 1]);
     }
-    else {
-      column = 0;
-      return pyramid[0][0] + pyramid[1][0];
-    }
-  } else if (pyramid.length > 2) {
-    sum = longestSlideDown(pyramid.slice(0, pyramid.length - 1));
-    for (let i = pyramid.length - 1; i < pyramid.length; i++) {
-      if (sum + pyramid[i][column] < sum + pyramid[i][column + 1]) {
-        column++;
-        return sum + pyramid[i][column];
-      } else return sum + pyramid[i][column];
-    }
-  } else return false;
+  }
+  return pyramidSum[0][0];
 }
 
 console.log(longestSlideDown([[3], [7, 4], [2, 4, 6]]));
