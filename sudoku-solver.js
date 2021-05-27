@@ -5,26 +5,27 @@ function sudoku(puzzle) {
   return fillInEmpty(0, emptyArray, puzzle);
 }
 
-function fillInEmpty(elm, emptyArray, puzzle) {
+function fillInEmpty(count, emptyArray, puzzle) {
   let row = [], solvedPuzzle = [];
-  console.log(elm);
-  if (elm === emptyArray.length) {
+  // console.log(count, emptyArray.length);
+  if (count === emptyArray.length) {
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
         row.push(puzzle[i][j]);
       }
       solvedPuzzle.push(row);
+      row = [];
     }
     return solvedPuzzle;
   }
 
-  const x = emptyArray[elm][1];
-  const y = emptyArray[elm][0];
+  const x = emptyArray[count][1];
+  const y = emptyArray[count][0];
 
   for (let i = 1; i <= 9; i++) {
     if (checkNumber(x, y, i, puzzle)) {
       puzzle[y][x] = i;
-      fillInEmpty(elm + 1, emptyArray, puzzle);
+      fillInEmpty(count + 1, emptyArray, puzzle);
       puzzle[y][x] = 0;
     }
   }
