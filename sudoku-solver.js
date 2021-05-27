@@ -4,6 +4,30 @@ function sudoku(puzzle) {
   console.log(emptyArray);
 }
 
+function fillInEmpty(elm, emptyArray, puzzle) {
+  let row = [], solvedPuzzle = [];
+  if (elm === emptyArray.length) {
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+        row.push(puzzle[i][j]);
+      }
+      solvedPuzzle.push(row);
+    }
+    return solvedPuzzle;
+  }
+
+  const x = emptyArray[elm][1];
+  const y = emptyArray[elm][0];
+
+  for (let i = 1; i <= 9; i++) {
+    if (checkNumber(x, y, i, puzzle)) {
+      puzzle[y][x] = i;
+      fillInEmpty(elm + 1, emptyArray, puzzle);
+      puzzle[y][x] = 0;
+    }
+  }
+}
+
 function whereIsEmptyPoint(puzzle, emptyArray) {
   for (let i = 0; i < puzzle.length; i++) {
     for (let j = 0; j < puzzle[i].length; j++) {
@@ -11,6 +35,10 @@ function whereIsEmptyPoint(puzzle, emptyArray) {
     }
   }
   return emptyArray;
+}
+
+function checkNumber(x, y, i, puzzle) {
+
 }
 
 var puzzle = [
