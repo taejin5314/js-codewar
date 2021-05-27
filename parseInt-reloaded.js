@@ -18,14 +18,12 @@ function parseInt(string) {
   const numberArray = string.split(' ');
   for (let i = 0; i < numberArray.length; i++) {
     if (translateToNumber(numberArray[i]) === null) {
-      result[i - 1] = translateToNumber(numberArray[i - 1]) * multiMap[numberArray[i]];
+      // result[i - 1] = translateToNumber(numberArray[i - 1]) * multiMap[numberArray[i]];
+      total *= multiMap[numberArray[i]];
     }
-    else result.push(translateToNumber(numberArray[i]));
+    else total += translateToNumber(numberArray[i]);
   }
 
-  for (i = 0; i < result.length; i++) {
-    total += result[i];
-  }
   return total;
 }
 
@@ -33,3 +31,4 @@ function parseInt(string) {
 console.log(parseInt('one'), 1);
 console.log(parseInt('twenty'), 20);
 console.log(parseInt('two hundred forty-six'), 246);
+console.log(parseInt('seven hundred eighty-three thousand nine hundred and nineteen'), 783919)
