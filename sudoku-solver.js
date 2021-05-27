@@ -1,5 +1,16 @@
 function sudoku(puzzle) {
   //return the solved puzzle as a 2d array of 9 x 9 
+  let emptyArray = whereIsEmptyPoint(puzzle, []);
+  console.log(emptyArray);
+}
+
+function whereIsEmptyPoint(puzzle, emptyArray) {
+  for (let i = 0; i < puzzle.length; i++) {
+    for (let j = 0; j < puzzle[i].length; j++) {
+      if (puzzle[i][j] === 0) emptyArray.push([i, j]);
+    }
+  }
+  return emptyArray;
 }
 
 var puzzle = [
