@@ -5,10 +5,17 @@ function sumOfDivided(lst) {
     if (Math.abs(elm) > Math.abs(max)) max = elm;
   }
   const primeArr = primeNumber(Math.abs(max));
+  let result = [];
 
-  for (let i = 0; i < lst.length; i++) {
-
+  for (let i = 0; i < primeArr.length; i++) {
+    let total = 0;
+    for (let j = 0; j < lst.length; j++) {
+      if (lst[j] % primeArr[i] === 0) total += lst[j];
+    }
+    if (total !== 0) result.push([primeArr[i], total]);
   }
+
+  return result;
 }
 
 function primeNumber(max) {
