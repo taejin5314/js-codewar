@@ -27,7 +27,7 @@ function fillInEmpty(count, emptyArray, puzzle) {
     if (checkNumber(x, y, i, puzzle)) {
       puzzle[y][x] = i;
       fillInEmpty(count + 1, emptyArray, puzzle)
-      puzzle[y][x] = 0;
+      return puzzle[y][x] = 0;
     }
   }
 }
