@@ -1,25 +1,16 @@
 function balancedParens(n) {
-  let result = []
-  if (n === 0) result.push("");
-  else if (n === 1) result.push("()");
-  else if (n > 1 && n % 2 === 1) {
-    for (let elm of balancedParens(n - 1)) {
-      result.push("(" + elm + ")");
-      result.push("()" + elm);
-      result.push(elm + "()");
+  let combinations = [];
+  let currentArr = [];
+  generateAllBalacnedParens(2 * n, currentArr, 0, combinations);
+
+  function generateAllBalacnedParens(currentLength, currentArr, pos, result) {
+    if (pos === currentLength) {
+      if (valid(current)) result.push(currentArr);
+    } else {
+      currentArr[pos] = '(';
+      generateAllBalacnedParens(currentLength +)
     }
   }
-  else if (n > 1 && n % 2 === 0) {
-    for (let elm of balancedParens(n - 2)) {
-      if (elm !== '') result.push(elm.repeat(2));
-    }
-    for (let elm of balancedParens(n - 1)) {
-      result.push("(" + elm + ")");
-      result.push("()" + elm);
-      result.push(elm + "()");
-    }
-  }
-  return result.filter((item, index) => result.indexOf(item) === index);
 }
 
 console.log(balancedParens(0).sort(), [""]);
