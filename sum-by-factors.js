@@ -1,13 +1,12 @@
 function sumOfDivided(lst) {
   //your code
-  return primeNumber(15);
+  return primeNumber(25);
 }
 
 function primeNumber(max) {
   let arr = [];
   for (let n = 2; n <= max; n++) {
     let count = 0;
-    if (n === 2 || n === 3) arr.push(n);
     for (let i = 2; i <= Math.sqrt(n); i++) {
       if (n % i === 0) {
         count++;
