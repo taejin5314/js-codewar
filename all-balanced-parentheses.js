@@ -8,10 +8,10 @@ function balancedParens(n) {
       result.push("()" + elm);
       result.push(elm + "()");
     }
-  } else if (n > 1 && n % 2 === 0) {
-    let temp = balancedParens(n - 2)[0];
-    if (temp !== '') {
-      result.push(temp.repeat(2));
+  }
+  else if (n > 1 && n % 2 === 0) {
+    for (let elm of balancedParens(n - 2)) {
+      if (elm !== '') result.push(elm.repeat(2));
     }
     for (let elm of balancedParens(n - 1)) {
       result.push("(" + elm + ")");
