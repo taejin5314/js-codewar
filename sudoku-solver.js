@@ -1,37 +1,33 @@
 function sudoku(puzzle) {
-  //return the solved puzzle as a 2d array of 9 x 9 
-  const emptyArray = whereIsEmptyPoint(puzzle, []);
-  // console.log(emptyArray);
-  console.log(fillInEmpty(0, emptyArray, puzzle));
-}
-
-function fillInEmpty(count, emptyArray, puzzle) {
   let solvedPuzzle = [];
-  // console.log(count, emptyArray.length);
-  if (count === emptyArray.length) {
-    for (let i = 0; i < puzzle.length; i++) {
-      let row = [];
-      for (let j = 0; j < puzzle[i].length; j++) {
-        row.push(puzzle[i][j]);
+  const emptyArray = whereIsEmptyPoint(puzzle, []);
+  fillInEmpty(0, emptyArray, puzzle)
+  return solvedPuzzle;
+
+  function fillInEmpty(count, emptyArray, puzzle) {
+    if (count === emptyArray.length) {
+      for (let i = 0; i < puzzle.length; i++) {
+        let row = [];
+        for (let j = 0; j < puzzle[i].length; j++) {
+          row.push(puzzle[i][j]);
+        }
+        solvedPuzzle.push(row);
       }
-      solvedPuzzle.push(row);
+      return solvedPuzzle;
     }
-    console.log(count, solvedPuzzle);
-    return solvedPuzzle;
-  }
 
-  const x = emptyArray[count][1];
-  const y = emptyArray[count][0];
+    const x = emptyArray[count][1];
+    const y = emptyArray[count][0];
 
-  for (let i = 1; i <= 9; i++) {
-    if (checkNumber(x, y, i, puzzle)) {
-      puzzle[y][x] = i;
-      fillInEmpty(count + 1, emptyArray, puzzle)
-      return puzzle[y][x] = 0;
+    for (let i = 1; i <= 9; i++) {
+      if (checkNumber(x, y, i, puzzle)) {
+        puzzle[y][x] = i;
+        fillInEmpty(count + 1, emptyArray, puzzle)
+        puzzle[y][x] = 0;
+      }
     }
   }
 }
-
 function whereIsEmptyPoint(puzzle, emptyArray) {
   for (let i = 0; i < puzzle.length; i++) {
     for (let j = 0; j < puzzle[i].length; j++) {
