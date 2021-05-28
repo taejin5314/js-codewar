@@ -1,5 +1,8 @@
 function rectangleRotation(a, b) {
   //coding and coding.. 
+  let xaxis = Math.floor(a / Math.sqrt(2));
+  let yaxis = Math.floor(b / Math.sqrt(2));
+  return xaxis * (yaxis * 2 + 1) + yaxis + 1;
 }
 
 console.log(rectangleRotation(6, 4), 23)
