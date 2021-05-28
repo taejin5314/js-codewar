@@ -8,11 +8,14 @@ function sumOfDivided(lst) {
   let result = [];
 
   for (let i = 0; i < primeArr.length; i++) {
-    let total = 0;
+    let total = 0, count = 0;
     for (let j = 0; j < lst.length; j++) {
-      if (lst[j] % primeArr[i] === 0) total += lst[j];
+      if (lst[j] % primeArr[i] === 0) {
+        total += lst[j];
+        count++;
+      }
     }
-    if (total !== 0) result.push([primeArr[i], total]);
+    if (count !== 0) result.push([primeArr[i], total]);
   }
 
   return result;
