@@ -1,4 +1,6 @@
 function lastDigit(as) {
+  if (as === []) return 1;
+
 }
 
 console.log(lastDigit([]), 1);
