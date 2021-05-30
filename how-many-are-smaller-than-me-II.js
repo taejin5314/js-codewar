@@ -4,8 +4,7 @@ function smaller(arr) {
   for (let i = 0; i < arr.length; i++) {
     let count = 0;
     for (let j = i; j < arr.length; j++) {
-      if (arr[i] > arr[j]);
-      count++;
+      if (arr[i] > arr[j]) count++;
     }
     result.push(count);
   }
