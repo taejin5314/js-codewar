@@ -1,6 +1,11 @@
 function lastDigit(as) {
-  if (as === []) return 1;
-
+  let n = 1;
+  if (as.length === 0) return 1;
+  for (let i = as.length; i >= 0; i--) {
+    n = Math.pow(as[i], (n < 4) ? n : n % 4 + 4)
+    console.log(n)
+  }
+  return n;
 }
 
 console.log(lastDigit([]), 1);
