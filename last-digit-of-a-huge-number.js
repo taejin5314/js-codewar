@@ -1,9 +1,8 @@
 function lastDigit(as) {
   let n = 1;
   if (as.length === 0) return 1;
-  for (let i = as.length; i >= 0; i--) {
-    n = Math.pow(as[i], (n < 4) ? n : n % 4 + 4)
-    console.log(n)
+  for (let i = as.length - 1; i >= 0; i--) {
+    n = Math.pow(as[i], n) % 4;
   }
   return n;
 }
