@@ -22,55 +22,43 @@ function blockMove(arr, currentPosition, endPosition, movement, directionArray) 
   if (xOne === xTwo && yOne === yTwo) {
     if (yOne + 2 < arr.length - 1 && arr[xOne][yOne + 1] === '1' && arr[xOne][yOne + 2] === '1') {
       fr = movement + parseInt(aStarH([[xOne, yOne + 1], [xOne, yOne + 2]], endPosition));
-      currentPosition = [[xOne, yOne + 1], [xOne, yOne + 2]]
     }
     if (yOne - 2 > 0 && arr[xOne][yOne - 1] === '1' && arr[xOne][yOne - 2] === '1') {
       fl = movement + parseInt(aStarH([[xOne, yOne - 1], [xOne, yOne - 2]], endPosition));
-      currentPosition = [[xOne, yOne - 1], [xOne, yOne - 2]];
     }
     if (xOne + 2 < arr.length - 1 && arr[xOne + 1][yOne] === '1' && arr[xOne + 2][yOne] === '1') {
       fd = movement + parseInt(aStarH([[xOne + 1, yOne], [xOne + 2, yOne]], endPosition));
-      currentPosition = [[xOne + 1, yOne], [xOne + 2, yOne]];
     }
     if (xOne - 2 > 0 && arr[xOne - 1][yOne] === '1' && arr[xOne - 2][yOne] === '1') {
       fu = movement + parseInt(aStarH([[xOne - 1, yOne], [xOne - 2, yOne]], endPosition));
-      currentPosition = [[xOne - 1, yOne], [xOne - 2, yOne]];
     }
   } else {
     if (xOne !== xTwo) {
       if (yOne + 1 < arr.length - 1 && arr[xOne][yOne + 1] === '1' && arr[xTwo][yTwo + 1] === '1') {
         fr = movement + parseInt(aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
         console.log(fr, movement, aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
-        currentPosition = [[xOne, yOne + 1], [xTwo, yTwo + 1]];
       }
       if (yOne - 1 > 0 && arr[xOne][yOne - 1] === '1' && arr[xTwo][yTwo - 1] === '1') {
-        fl = movement + parseInt(aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
-        currentPosition = [[xOne, yOne + 1], [xTwo, yTwo + 1]];
+        fl = movement + parseInt(aStarH([[xOne, yOne - 1], [xTwo, yTwo - 1]], endPosition));
       }
       if (Math.max(xOne, xTwo) + 1 < arr.length - 1 && arr[Math.max(xOne, xTwo) + 1][yOne] === '1') {
         fd = movement + parseInt(aStarH([[Math.max(xOne, xTwo) + 1, yOne], [Math.max(xOne, xTwo) + 1, yTwo]], endPosition));
-        currentPosition = [[Math.max(xOne, xTwo) + 1, yOne], [Math.max(xOne, xTwo) + 1, yTwo]];
       }
       if (Math.min(xOne, xTwo) - 1 > 0 && arr[Math.min(xOne, xTwo) - 1][yOne] === '1') {
         fu = movement + parseInt(aStarH([[Math.min(xOne, xTwo) - 1, yOne], [Math.min(xOne, xTwo) - 1, yTwo]], endPosition));
-        currentPosition = [[Math.min(xOne, xTwo) - 1, yOne], [Math.min(xOne, xTwo) - 1, yTwo]];
       }
     } else if (yOne !== yTwo) {
       if (Math.max(yOne, yTwo) + 1 < arr.length - 1 && arr[xOne][Math.max(yOne, yTwo) + 1] === '1') {
         fr = movement + parseInt(aStarH([[xOne, Math.max(yOne, yTwo) + 1], [xTwo, Math.max(yOne, yTwo) + 1]], endPosition));
-        currentPosition = [[xOne, Math.max(yOne, yTwo) + 1], [xTwo, Math.max(yOne, yTwo) + 1]];
       }
       if (Math.min(yOne, yTwo) - 1 > 0 && arr[xOne][Math.min(yOne, yTwo) - 1] === '1') {
         fl = movement + parseInt(aStarH([[xOne, Math.min(yOne, yTwo) - 1], [xTwo, Math.min(yOne, yTwo) - 1]], endPosition));
-        currentPosition = [[xOne, Math.min(yOne, yTwo) - 1], [xTwo, Math.min(yOne, yTwo) - 1]];
       }
       if (xOne + 1 < arr.length - 1 && arr[xOne + 1][yOne] === '1' && arr[xTwo + 1][yTwo] === '1') {
         fd = movement + parseInt(aStarH([[xOne + 1, yOne], [xTwo + 1, yTwo]], endPosition));
-        currentPosition = [[xOne + 1, yOne], [xTwo + 1, yTwo]];
       }
       if (xOne - 1 > 0 && arr[xOne - 1][yOne] === '1' && arr[xTwo - 1][yTwo] === '1') {
         fu = movement + parseInt(aStarH([[xOne - 1, yOne], [xTwo - 1, yTwo]], endPosition));
-        currentPosition = [[xOne - 1, yOne], [xTwo - 1, yTwo]];
       }
     }
   }
@@ -79,18 +67,54 @@ function blockMove(arr, currentPosition, endPosition, movement, directionArray) 
   switch (min) {
     case fr:
       // console.log('right');
+      if (xOne === xTwo && yOne === yTwo) {
+        currentPosition = [[xOne, yOne + 1], [xOne, yOne + 2]];
+      } else {
+        if (xOne !== xTwo) {
+          currentPosition = [[xOne, yOne + 1], [xTwo, yTwo + 1]];
+        } else if (yOne !== yTwo) {
+          currentPosition = [[xOne, Math.max(yOne, yTwo) + 1], [xTwo, Math.max(yOne, yTwo) + 1]];
+        }
+      }
       directionArray.push('R');
       break;
     case fl:
       // console.log('left');
+      if (xOne === xTwo && yOne === yTwo) {
+        currentPosition = [[xOne, yOne - 1], [xOne, yOne - 2]];
+      } else {
+        if (xOne !== xTwo) {
+          currentPosition = [[xOne, yOne - 1], [xTwo, yTwo - 1]];
+        } else if (yOne !== yTwo) {
+          currentPosition = [[xOne, Math.min(yOne, yTwo) - 1], [xTwo, Math.min(yOne, yTwo) - 1]];
+        }
+      }
       directionArray.push('L');
       break;
     case fu:
       // console.log('up');
+      if (xOne === xTwo && yOne === yTwo) {
+        currentPosition = [[xOne - 1, yOne], [xOne - 2, yOne]];
+      } else {
+        if (xOne !== xTwo) {
+          currentPosition = [[Math.min(xOne, xTwo) - 1, yOne], [Math.min(xOne, xTwo) - 1, yTwo]];
+        } else if (yOne !== yTwo) {
+          currentPosition = [[xOne - 1, yOne], [xTwo - 1, yTwo]];
+        }
+      }
       directionArray.push('U');
       break;
     case fd:
       // console.log('down');
+      if (xOne === xTwo && yOne === yTwo) {
+        currentPosition = [[xOne + 1, yOne], [xOne + 2, yOne]];
+      } else {
+        if (xOne !== xTwo) {
+          currentPosition = [[Math.max(xOne, xTwo) + 1, yOne], [Math.max(xOne, xTwo) + 1, yTwo]];
+        } else if (yOne !== yTwo) {
+          currentPosition = [[xOne + 1, yOne], [xTwo + 1, yTwo]];
+        }
+      }
       directionArray.push('D');
       break;
   }
