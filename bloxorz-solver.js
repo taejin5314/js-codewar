@@ -1,15 +1,20 @@
 function bloxSolver(arr) {
   //your code goes here. you can do it!
-  const startPosition = findPositionOnMap(arr, 'B');
+  const startPosition = [findPositionOnMap(arr, 'B'), findPositionOnMap(arr, 'B')];
   const endPosition = findPositionOnMap(arr, 'X');
   console.log(startPosition);
   console.log(endPosition);
+  console.log(aStarH(startPosition, endPosition));
+}
+
+function aStarH(currentPosition, endPosition) {
+  return Math.max(Math.max(Math.abs(currentPosition[0][0] - endPosition[0]), Math.abs(currentPosition[1, 0] - endPosition[0])), Math.max(Math.abs(currentPosition[0][1] - endPosition[1]), Math.abs(currentPosition[1][1] - endPosition[1])));
 }
 
 function findPositionOnMap(board, target) {
   const matchedRows = board.filter(row => row.search(target) >= 0);
 
-  if (matchedRows.length === 1) return [[board.indexOf(matchedRows[0]), matchedRows[0].indexOf(target)]]
+  if (matchedRows.length === 1) return [board.indexOf(matchedRows[0]), matchedRows[0].indexOf(target)]
 }
 
 console.log(bloxSolver(['1110000000',
