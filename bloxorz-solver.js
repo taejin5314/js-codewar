@@ -2,13 +2,15 @@ function bloxSolver(arr) {
   //your code goes here. you can do it!
   const startPosition = [findPositionOnMap(arr, 'B'), findPositionOnMap(arr, 'B')];
   const endPosition = findPositionOnMap(arr, 'X');
-  let result = { 'direction': [], 'currentPosition': startPosition, "movement": 0 };
+  let result = { 'direction': [], 'currentPosition': startPosition };
+  let movement = 0;
 
 
   while (true) {
     console.log(result.currentPosition, result.direction)
     if (result.currentPosition[0][0] === endPosition[0] && result.currentPosition[0][1] === endPosition[1] && result.currentPosition[1][0] === endPosition[0] && result.currentPosition[1][1] === endPosition[1]) return result.direction;
-    result = blockMove(arr, result.currentPosition, endPosition, result.movement, result.direction);
+    movement++;
+    result = blockMove(arr, result.currentPosition, endPosition, movement, result.direction);
   }
 }
 
@@ -128,7 +130,7 @@ function blockMove(arr, currentPosition, endPosition, movement, directionArray) 
       break;
   }
 
-  return { 'direction': directionArray, 'currentPosition': currentPosition, 'movement': movement };
+  return { 'direction': directionArray, 'currentPosition': currentPosition };
 }
 
 function aStarH(currentPosition, endPosition) {
