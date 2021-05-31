@@ -5,7 +5,7 @@ function bloxSolver(arr) {
   let result = { 'direction': [], 'currentPosition': startPosition, "movement": 0 };
 
 
-  while (result.currentPosition !== endPosition) {
+  while (result.currentPosition !== [endPosition, endPosition]) {
     console.log(result.currentPosition, result.direction)
     result = blockMove(arr, result.currentPosition, endPosition, result.movement, result.direction);
   }
@@ -19,7 +19,7 @@ function blockMove(arr, currentPosition, endPosition, movement, directionArray) 
   movement++;
 
   if (xOne === xTwo && yOne === yTwo) {
-    if (yOne + 2 < arr.length - 1 && arr[xOne][yOne + 1] === '1' && arr[xOne][yOne + 2] === '1') {
+    if (yOne + 2 < arr[0].length - 1 && arr[xOne][yOne + 1] === '1' && arr[xOne][yOne + 2] === '1') {
       fr = movement + parseInt(aStarH([[xOne, yOne + 1], [xOne, yOne + 2]], endPosition));
       console.log(aStarH([[xOne, yOne + 1], [xOne, yOne + 2]], endPosition));
     }
@@ -37,7 +37,7 @@ function blockMove(arr, currentPosition, endPosition, movement, directionArray) 
     }
   } else {
     if (xOne !== xTwo) {
-      if (yOne + 1 < arr.length - 1 && arr[xOne][yOne + 1] === '1' && arr[xTwo][yTwo + 1] === '1') {
+      if (yOne + 1 < arr[0].length - 1 && arr[xOne][yOne + 1] === '1' && arr[xTwo][yTwo + 1] === '1') {
         fr = movement + parseInt(aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
         console.log(aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
       }
@@ -136,8 +136,7 @@ function aStarH(currentPosition, endPosition) {
   console.log('this is', currentPosition, endPosition);
   n = Math.max(Math.abs(currentPosition[0][0] - endPosition[0]), Math.abs(currentPosition[0][1] - endPosition[1]));
   n1 = Math.max(Math.abs(currentPosition[1][0] - endPosition[0]), Math.abs(currentPosition[1][1] - endPosition[1]));
-  if (n === n1) return n;
-  return [n, n1];
+  return Math.max(n, n1);
 }
 
 function findPositionOnMap(board, target) {
