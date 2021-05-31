@@ -2,11 +2,14 @@ function bloxSolver(arr) {
   //your code goes here. you can do it!
   const startPosition = findPositionOnMap(arr, 'B');
   const endPosition = findPositionOnMap(arr, 'X');
+  console.log(startPosition);
+  console.log(endPosition);
 }
 
 function findPositionOnMap(board, target) {
   const matchedRows = board.filter(row => row.search(target) >= 0);
-  console.log(matchedRows);
+
+  if (matchedRows.length === 1) return [[board.indexOf(matchedRows[0]), matchedRows[0].indexOf(target)]]
 }
 
 console.log(bloxSolver(['1110000000',
