@@ -6,7 +6,32 @@ function bloxSolver(arr) {
 
   console.log(startPosition);
   console.log(endPosition);
-  console.log(aStarH(startPosition, endPosition));
+  console.log(blockMove(arr, startPosition, endPosition, movement, []))
+}
+
+function blockMove(arr, currentPosition, endPosition, movement, directionArray) {
+  const direction = ['R', 'L', 'U', 'D'];
+  const xOne = currentPosition[0][0], yOne = currentPosition[0][1], xTwo = currentPosition[1][0], yTwo = currentPosition[1][1];
+  let fr, fl, fu, fd;
+  movement++;
+
+  if (xOne === xTwo && yOne === yTwo) {
+    if (yOne + 2 < arr.length - 1 && arr[xOne][yOne + 1] === '1' && arr[xOne][yOne + 2] === '1') fr = movement + parseInt(aStarH([[xOne, yOne + 1], [xOne, yOne + 2]], endPosition));
+    if (yOne - 2 > 0 && arr[xOne][yOne - 1] === '1' && arr[xOne][yOne - 2] === '1') fl = movement + parseInt(aStarH([[xOne, yOne - 1], [xOne, yOne - 2]], endPosition));
+    if (xOne + 2 < arr.length - 1 && arr[xOne + 1][yOne] === '1' && arr[xOne + 2][yOne] === '1') fd = movement + parseInt(aStarH([[xOne + 1, yOne], [xOne + 2, yOne]], endPosition));
+    if (xOne - 2 > 0 && arr[xOne - 1][yOne] === '1' && arr[xOne - 2][yOne] === '1') fu = movement + parseInt(aStarH([[xOne - 1, yOne], [xOne - 2, yOne]], endPosition));
+  } else {
+    if (xOne !== xTwo) {
+      if (yOne + 1 < arr.length - 1 && arr[xOne][yOne + 1] === '1' && arr[xTwo][yTwo + 1] === '1') fr = movement + parseInt(aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
+      if (yOne - 1 > 0 && arr[xOne][yOne - 1] === '1' && arr[xTwo][yTwo - 1] === '1') fl = movement + parseInt(aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
+      if (Math.max(xOne, xTwo) + 1 < arr.length - 1 && arr[Math.max(xOne, xTwo) + 1][yOne] === '1') fd = movement + parseInt(aStarH([[Math.max(xOne, xTwo) + 1, yOne], [Math.max(xOne, xTwo) + 1, yTwo]], endPosition));
+      if (Math.max(xOne, xTwo) - 1 > 0 && arr[Math.max(xOne, xTwo) + 1][yOne] === '1') fu = movement + parseInt(aStarH([[Math.max(xOne, xTwo) - 1, yOne], [Math.max(xOne, xTwo) - 1, yTwo]], endPosition));
+    } else if (yOne !== yTwo) {
+
+    }
+  }
+
+  return [fr, fl, fu, fd];
 }
 
 function aStarH(currentPosition, endPosition) {
