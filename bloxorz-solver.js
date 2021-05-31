@@ -6,7 +6,7 @@ function bloxSolver(arr) {
 
   console.log(startPosition);
   console.log(endPosition);
-  console.log(blockMove(arr, startPosition, endPosition, movement, []))
+  console.log(blockMove(arr, [[1, 2], [1, 3]], endPosition, movement, []))
 }
 
 function blockMove(arr, currentPosition, endPosition, movement, directionArray) {
@@ -25,9 +25,12 @@ function blockMove(arr, currentPosition, endPosition, movement, directionArray) 
       if (yOne + 1 < arr.length - 1 && arr[xOne][yOne + 1] === '1' && arr[xTwo][yTwo + 1] === '1') fr = movement + parseInt(aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
       if (yOne - 1 > 0 && arr[xOne][yOne - 1] === '1' && arr[xTwo][yTwo - 1] === '1') fl = movement + parseInt(aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
       if (Math.max(xOne, xTwo) + 1 < arr.length - 1 && arr[Math.max(xOne, xTwo) + 1][yOne] === '1') fd = movement + parseInt(aStarH([[Math.max(xOne, xTwo) + 1, yOne], [Math.max(xOne, xTwo) + 1, yTwo]], endPosition));
-      if (Math.max(xOne, xTwo) - 1 > 0 && arr[Math.max(xOne, xTwo) + 1][yOne] === '1') fu = movement + parseInt(aStarH([[Math.max(xOne, xTwo) - 1, yOne], [Math.max(xOne, xTwo) - 1, yTwo]], endPosition));
+      if (Math.min(xOne, xTwo) - 1 > 0 && arr[Math.min(xOne, xTwo) - 1][yOne] === '1') fu = movement + parseInt(aStarH([[Math.min(xOne, xTwo) - 1, yOne], [Math.min(xOne, xTwo) - 1, yTwo]], endPosition));
     } else if (yOne !== yTwo) {
-
+      if (Math.max(yOne, yTwo) + 1 < arr.length - 1 && arr[xOne][Math.max(yOne, yTwo) + 1] === '1') fr = movement + parseInt(aStarH([[xOne, Math.max(yOne, yTwo) + 1], [xTwo, Math.max(yOne, yTwo) + 1]], endPosition));
+      if (Math.min(yOne, yTwo) - 1 > 0 && arr[xOne][Math.min(yOne, yTwo) - 1] === '1') fl = movement + parseInt(aStarH([[xOne, Math.min(yOne, yTwo) - 1], [xTwo, Math.min(yOne, yTwo) - 1]], endPosition));
+      if (xOne + 1 < arr.length - 1 && arr[xOne + 1][yOne] === '1' && arr[xTwo + 1][yTwo] === '1') fd = movement + parseInt(aStarH([[xOne + 1], [xTwo + 1][yTwo]], endPosition));
+      if (xOne - 1 > 0 && arr[xOne - 1][yOne] === '1' && arr[xTwo - 1][yTwo] === '1') fu = movement + parseInt(aStarH([[xOne - 1][yOne], [xTwo - 1][yTwo]], endPosition));
     }
   }
 
