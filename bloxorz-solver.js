@@ -2,13 +2,12 @@ function bloxSolver(arr) {
   //your code goes here. you can do it!
   const startPosition = [findPositionOnMap(arr, 'B'), findPositionOnMap(arr, 'B')];
   const endPosition = findPositionOnMap(arr, 'X');
-  let result = { 'direction': [], 'currentPosition': startPosition };
-  let movement = 0;
+  let result = { 'direction': [], 'currentPosition': startPosition, "movement": 0 };
 
 
   while (result.currentPosition !== endPosition) {
     console.log(result.currentPosition, result.direction)
-    result = blockMove(arr, result.currentPosition, endPosition, movement, result.direction);
+    result = blockMove(arr, result.currentPosition, endPosition, result.movement, result.direction);
   }
 
   return result.direction;
@@ -22,43 +21,54 @@ function blockMove(arr, currentPosition, endPosition, movement, directionArray) 
   if (xOne === xTwo && yOne === yTwo) {
     if (yOne + 2 < arr.length - 1 && arr[xOne][yOne + 1] === '1' && arr[xOne][yOne + 2] === '1') {
       fr = movement + parseInt(aStarH([[xOne, yOne + 1], [xOne, yOne + 2]], endPosition));
+      console.log(aStarH([[xOne, yOne + 1], [xOne, yOne + 2]], endPosition));
     }
     if (yOne - 2 > 0 && arr[xOne][yOne - 1] === '1' && arr[xOne][yOne - 2] === '1') {
       fl = movement + parseInt(aStarH([[xOne, yOne - 1], [xOne, yOne - 2]], endPosition));
+      console.log(aStarH([[xOne, yOne - 1], [xOne, yOne - 2]], endPosition));
     }
     if (xOne + 2 < arr.length - 1 && arr[xOne + 1][yOne] === '1' && arr[xOne + 2][yOne] === '1') {
       fd = movement + parseInt(aStarH([[xOne + 1, yOne], [xOne + 2, yOne]], endPosition));
+      console.log(aStarH([[xOne + 1, yOne], [xOne + 2, yOne]], endPosition));
     }
     if (xOne - 2 > 0 && arr[xOne - 1][yOne] === '1' && arr[xOne - 2][yOne] === '1') {
       fu = movement + parseInt(aStarH([[xOne - 1, yOne], [xOne - 2, yOne]], endPosition));
+      console.log(aStarH([[xOne - 1, yOne], [xOne - 2, yOne]], endPosition));
     }
   } else {
     if (xOne !== xTwo) {
       if (yOne + 1 < arr.length - 1 && arr[xOne][yOne + 1] === '1' && arr[xTwo][yTwo + 1] === '1') {
         fr = movement + parseInt(aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
-        console.log(fr, movement, aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
+        console.log(aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
       }
       if (yOne - 1 > 0 && arr[xOne][yOne - 1] === '1' && arr[xTwo][yTwo - 1] === '1') {
         fl = movement + parseInt(aStarH([[xOne, yOne - 1], [xTwo, yTwo - 1]], endPosition));
+        console.log(aStarH([[xOne, yOne - 1], [xTwo, yTwo - 1]], endPosition))
       }
       if (Math.max(xOne, xTwo) + 1 < arr.length - 1 && arr[Math.max(xOne, xTwo) + 1][yOne] === '1') {
         fd = movement + parseInt(aStarH([[Math.max(xOne, xTwo) + 1, yOne], [Math.max(xOne, xTwo) + 1, yTwo]], endPosition));
+        console.log(aStarH([[Math.max(xOne, xTwo) + 1, yOne], [Math.max(xOne, xTwo) + 1, yTwo]], endPosition))
       }
       if (Math.min(xOne, xTwo) - 1 > 0 && arr[Math.min(xOne, xTwo) - 1][yOne] === '1') {
         fu = movement + parseInt(aStarH([[Math.min(xOne, xTwo) - 1, yOne], [Math.min(xOne, xTwo) - 1, yTwo]], endPosition));
+        console.log(aStarH([[Math.min(xOne, xTwo) - 1, yOne], [Math.min(xOne, xTwo) - 1, yTwo]], endPosition))
       }
     } else if (yOne !== yTwo) {
       if (Math.max(yOne, yTwo) + 1 < arr.length - 1 && arr[xOne][Math.max(yOne, yTwo) + 1] === '1') {
         fr = movement + parseInt(aStarH([[xOne, Math.max(yOne, yTwo) + 1], [xTwo, Math.max(yOne, yTwo) + 1]], endPosition));
+        console.log(aStarH([[xOne, Math.max(yOne, yTwo) + 1], [xTwo, Math.max(yOne, yTwo) + 1]], endPosition))
       }
       if (Math.min(yOne, yTwo) - 1 > 0 && arr[xOne][Math.min(yOne, yTwo) - 1] === '1') {
         fl = movement + parseInt(aStarH([[xOne, Math.min(yOne, yTwo) - 1], [xTwo, Math.min(yOne, yTwo) - 1]], endPosition));
+        console.log(aStarH([[xOne, Math.min(yOne, yTwo) - 1], [xTwo, Math.min(yOne, yTwo) - 1]], endPosition))
       }
       if (xOne + 1 < arr.length - 1 && arr[xOne + 1][yOne] === '1' && arr[xTwo + 1][yTwo] === '1') {
         fd = movement + parseInt(aStarH([[xOne + 1, yOne], [xTwo + 1, yTwo]], endPosition));
+        console.log(aStarH([[xOne + 1, yOne], [xTwo + 1, yTwo]], endPosition))
       }
       if (xOne - 1 > 0 && arr[xOne - 1][yOne] === '1' && arr[xTwo - 1][yTwo] === '1') {
         fu = movement + parseInt(aStarH([[xOne - 1, yOne], [xTwo - 1, yTwo]], endPosition));
+        console.log(aStarH([[xOne - 1, yOne], [xTwo - 1, yTwo]], endPosition))
       }
     }
   }
@@ -119,11 +129,11 @@ function blockMove(arr, currentPosition, endPosition, movement, directionArray) 
       break;
   }
 
-  return { 'direction': directionArray, 'currentPosition': currentPosition };
+  return { 'direction': directionArray, 'currentPosition': currentPosition, 'movement': movement };
 }
 
 function aStarH(currentPosition, endPosition) {
-  // console.log('this is', currentPosition, endPosition);
+  console.log('this is', currentPosition, endPosition);
   n = Math.max(Math.abs(currentPosition[0][0] - endPosition[0]), Math.abs(currentPosition[0][1] - endPosition[1]));
   n1 = Math.max(Math.abs(currentPosition[1][0] - endPosition[0]), Math.abs(currentPosition[1][1] - endPosition[1]));
   if (n === n1) return n;
