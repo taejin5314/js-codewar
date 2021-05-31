@@ -2,14 +2,13 @@ function bloxSolver(arr) {
   //your code goes here. you can do it!
   const startPosition = [findPositionOnMap(arr, 'B'), findPositionOnMap(arr, 'B')];
   const endPosition = findPositionOnMap(arr, 'X');
-  let directionArray = [];
   let result = { 'direction': [], 'currentPosition': startPosition };
   let movement = 0;
 
 
   while (result.currentPosition !== endPosition) {
     console.log(result.currentPosition, result.direction)
-    result = blockMove(arr, result.currentPosition, endPosition, movement, directionArray);
+    result = blockMove(arr, result.currentPosition, endPosition, movement, result.direction);
   }
 
   return result.direction;
@@ -41,6 +40,7 @@ function blockMove(arr, currentPosition, endPosition, movement, directionArray) 
     if (xOne !== xTwo) {
       if (yOne + 1 < arr.length - 1 && arr[xOne][yOne + 1] === '1' && arr[xTwo][yTwo + 1] === '1') {
         fr = movement + parseInt(aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
+        console.log(fr, movement, aStarH([[xOne, yOne + 1], [xTwo, yTwo + 1]], endPosition));
         currentPosition = [[xOne, yOne + 1], [xTwo, yTwo + 1]];
       }
       if (yOne - 1 > 0 && arr[xOne][yOne - 1] === '1' && arr[xTwo][yTwo - 1] === '1') {
@@ -102,6 +102,7 @@ function aStarH(currentPosition, endPosition) {
   // console.log('this is', currentPosition, endPosition);
   n = Math.max(Math.abs(currentPosition[0][0] - endPosition[0]), Math.abs(currentPosition[0][1] - endPosition[1]));
   n1 = Math.max(Math.abs(currentPosition[1][0] - endPosition[0]), Math.abs(currentPosition[1][1] - endPosition[1]));
+  if (n === n1) return n;
   return [n, n1];
 }
 
