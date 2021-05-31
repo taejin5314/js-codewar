@@ -2,11 +2,15 @@ function bloxSolver(arr) {
   //your code goes here. you can do it!
   const startPosition = [findPositionOnMap(arr, 'B'), findPositionOnMap(arr, 'B')];
   const endPosition = findPositionOnMap(arr, 'X');
+  let directionArray = [];
   let movement = 0;
 
   console.log(startPosition);
   console.log(endPosition);
-  console.log(blockMove(arr, [[1, 2], [1, 3]], endPosition, movement, []))
+  console.log(aStarH(startPosition, endPosition))
+  directionArray = blockMove(arr, startPosition, endPosition, movement, directionArray);
+
+  return directionArray;
 }
 
 function blockMove(arr, currentPosition, endPosition, movement, directionArray) {
@@ -29,15 +33,36 @@ function blockMove(arr, currentPosition, endPosition, movement, directionArray) 
     } else if (yOne !== yTwo) {
       if (Math.max(yOne, yTwo) + 1 < arr.length - 1 && arr[xOne][Math.max(yOne, yTwo) + 1] === '1') fr = movement + parseInt(aStarH([[xOne, Math.max(yOne, yTwo) + 1], [xTwo, Math.max(yOne, yTwo) + 1]], endPosition));
       if (Math.min(yOne, yTwo) - 1 > 0 && arr[xOne][Math.min(yOne, yTwo) - 1] === '1') fl = movement + parseInt(aStarH([[xOne, Math.min(yOne, yTwo) - 1], [xTwo, Math.min(yOne, yTwo) - 1]], endPosition));
-      if (xOne + 1 < arr.length - 1 && arr[xOne + 1][yOne] === '1' && arr[xTwo + 1][yTwo] === '1') fd = movement + parseInt(aStarH([[xOne + 1], [xTwo + 1][yTwo]], endPosition));
-      if (xOne - 1 > 0 && arr[xOne - 1][yOne] === '1' && arr[xTwo - 1][yTwo] === '1') fu = movement + parseInt(aStarH([[xOne - 1][yOne], [xTwo - 1][yTwo]], endPosition));
+      if (xOne + 1 < arr.length - 1 && arr[xOne + 1][yOne] === '1' && arr[xTwo + 1][yTwo] === '1') fd = movement + parseInt(aStarH([[xOne + 1, yOne], [xTwo + 1, yTwo]], endPosition));
+      if (xOne - 1 > 0 && arr[xOne - 1][yOne] === '1' && arr[xTwo - 1][yTwo] === '1') fu = movement + parseInt(aStarH([[xOne - 1, yOne], [xTwo - 1, yTwo]], endPosition));
     }
   }
 
-  return [fr, fl, fu, fd];
+  let min = Math.min(fr ? fr : 9999, fl ? fl : 9999, fu ? fu : 9999, fd ? fd : 9999);
+  switch (min) {
+    case fr:
+      console.log('right');
+      directionArray.push('R');
+      break;
+    case fl:
+      console.log('left');
+      directionArray.push('L');
+      break;
+    case fu:
+      console.log('up');
+      directionArray.push('U');
+      break;
+    case fd:
+      console.log('down');
+      directionArray.push('D');
+      break;
+  }
+
+  return directionArray;
 }
 
 function aStarH(currentPosition, endPosition) {
+  console.log('this is', currentPosition, endPosition);
   n = Math.max(Math.abs(currentPosition[0][0] - endPosition[0]), Math.abs(currentPosition[0][1] - endPosition[1]));
   n1 = Math.max(Math.abs(currentPosition[1][0] - endPosition[0]), Math.abs(currentPosition[1][1] - endPosition[1]));
   return [n, n1];
