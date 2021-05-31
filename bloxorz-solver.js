@@ -8,8 +8,11 @@ function bloxSolver(arr) {
 }
 
 function aStarH(currentPosition, endPosition) {
-  return Math.max(Math.max(Math.abs(currentPosition[0][0] - endPosition[0]), Math.abs(currentPosition[1, 0] - endPosition[0])), Math.max(Math.abs(currentPosition[0][1] - endPosition[1]), Math.abs(currentPosition[1][1] - endPosition[1])));
+  n = Math.max(Math.abs(currentPosition[0][0] - endPosition[0]), Math.abs(currentPosition[0][1] - endPosition[1]));
+  n1 = Math.max(Math.abs(currentPosition[1][0] - endPosition[0]), Math.abs(currentPosition[1][1] - endPosition[1]));
+  return [n, n1];
 }
+
 
 function findPositionOnMap(board, target) {
   const matchedRows = board.filter(row => row.search(target) >= 0);
