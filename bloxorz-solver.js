@@ -2,6 +2,8 @@ function bloxSolver(arr) {
   //your code goes here. you can do it!
   const startPosition = [findPositionOnMap(arr, 'B'), findPositionOnMap(arr, 'B')];
   const endPosition = findPositionOnMap(arr, 'X');
+  let movement = 0;
+
   console.log(startPosition);
   console.log(endPosition);
   console.log(aStarH(startPosition, endPosition));
@@ -13,10 +15,8 @@ function aStarH(currentPosition, endPosition) {
   return [n, n1];
 }
 
-
 function findPositionOnMap(board, target) {
   const matchedRows = board.filter(row => row.search(target) >= 0);
-
   if (matchedRows.length === 1) return [board.indexOf(matchedRows[0]), matchedRows[0].indexOf(target)]
 }
 
