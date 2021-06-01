@@ -1,17 +1,25 @@
 function triangle(row) {
-  const arr = row.split('');
-  let newString = '';
-  if (arr.length === 1) return arr[0];
-  else if (arr.length === 2) {
-    if (arr[0] === arr[1]) return arr[0];
-    else if ((arr[0] === 'B' && arr[1] === 'G') || (arr[0] === 'G' && arr[1] === 'B')) return 'R';
-    else if ((arr[0] === 'R' && arr[1] === 'G') || (arr[0] === 'G' && arr[1] === 'R')) return 'B';
-    else if ((arr[0] === 'B' && arr[1] === 'R') || (arr[0] === 'R' && arr[1] === 'B')) return 'G';
-  } else if (arr.length > 2) {
-    for (let i = 0; i < arr.length - 1; i++) {
-      newString += triangle(row.slice(i, i + 2));
-    }
-    return triangle(newString);
+  let sum = 0;
+  const n = row.length;
+
+
+}
+
+function numToString(i) {
+  switch (i) {
+    case 0: return 'R';
+    case 1: return 'G';
+    case 2: return 'B';
+    default: return '\0';
+  }
+}
+
+function StringToNum(c) {
+  switch (c) {
+    case 'R': return 0;
+    case 'G': return 1;
+    case 'B': return 2;
+    default: return 3;
   }
 }
 
