@@ -30,7 +30,11 @@ function expand(expr) {
 
     for (let i = n; i >= 0; i--) {
       if (i !== 0) {
-        result += Math.pow(a, i) * Math.pow(b, n - i) * combinations(i, n - i);
+        const temp = Math.pow(a, i) * Math.pow(b, n - i) * combinations(i, n - i)
+        if (i !== n && temp > 0) result += '+' + temp;
+        else if (i === n) result += temp;
+        else if (temp < 0) result += temp;
+        else result += '';
         result += (i !== 1) ? x + '^' + i : x;
       } else {
         if (Math.pow(b, n - i) > 0) result += '+' + Math.pow(b, n - i);
