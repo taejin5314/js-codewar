@@ -30,7 +30,7 @@ function expand(expr) {
 
     for (let i = n; i >= 0; i--) {
       if (i !== 0) {
-        const temp = Math.pow(a, i) * Math.pow(b, n - i) * combinations(i, n - i)
+        const temp = Math.pow(a, i) * Math.pow(b, n - i) * combinations(n, i)
         if (i !== n && temp > 0) result += '+' + temp;
         else if (i === n) result += temp;
         else if (temp < 0) result += temp;
@@ -42,27 +42,18 @@ function expand(expr) {
         else result += Math.pow(b, n - i);
       }
     }
-    console.log(result);
+    return result;
   }
 }
 
-function product_Range(a, b) {
-  var prd = a, i = a;
 
-  while (i++ < b) {
-    prd *= i;
-  }
-  return prd;
+function factorial(a) {
+  let result = 1;
+  for (let i = 1; i <= a; i++) result *= i;
+  return result;
 }
-
 function combinations(n, r) {
-  if (n === r) {
-    return 1;
-  }
-  else {
-    r = (r < n - r) ? n - r : r;
-    return product_Range(r + 1, n) / product_Range(1, n - r);
-  }
+  return factorial(n) / (factorial(r) * factorial(n - r))
 }
 
 console.log(expand("(x+1)^0"), "1");
