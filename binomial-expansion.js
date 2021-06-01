@@ -2,6 +2,7 @@ function expand(expr) {
   const arr = expr.split('^');
   const n = parseInt(arr[1]);
   let a, x, b;
+  let result = '';
   if (n === 0) return '1';
   else if (n === 1) return arr[0].slice(1, -1);
   else {
@@ -26,7 +27,18 @@ function expand(expr) {
         b = parseInt(arr[0].slice(3));
       }
     }
-    console.log(a, x, b, n);
+
+    for (let i = n; i >= 0; i--) {
+      if (i !== 0) {
+        result += Math.pow(a, i) * Math.pow(b, n - i);
+        result += x + '^' + i;
+      } else {
+        if (Math.pow(b, n - i) > 0) result += '+' + Math.pow(b, n - i);
+        else if (b === 0) result += '';
+        else result += Math.pow(b, n - i);
+      }
+    }
+    console.log(result);
   }
 }
 
