@@ -15,6 +15,16 @@ function expand(expr) {
         x = arr[0][3];
         b = parseInt(arr[0].slice(4))
       }
+    } else {
+      if (isNaN(parseInt(arr[0][1]))) {
+        a = 1;
+        x = arr[0][1];
+        b = parseInt(arr[0].slice(2));
+      } else {
+        a = parseInt(arr[0].slice(1, 2));
+        x = arr[0][2];
+        b = parseInt(arr[0].slice(3));
+      }
     }
     console.log(a, x, b, n);
   }
