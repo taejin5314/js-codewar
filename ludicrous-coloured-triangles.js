@@ -1,5 +1,6 @@
 function triangle(row) {
   const arr = row.split('');
+  let newString = '';
   if (arr.length === 1) return arr[0];
   else if (arr.length === 2) {
     if (arr[0] === arr[1]) return arr[0];
@@ -7,7 +8,10 @@ function triangle(row) {
     else if ((arr[0] === 'R' && arr[1] === 'G') || (arr[0] === 'G' && arr[1] === 'R')) return 'B';
     else if ((arr[0] === 'B' && arr[1] === 'R') || (arr[0] === 'R' && arr[1] === 'B')) return 'G';
   } else if (arr.length > 2) {
-    return triangle(triangle(row.slice(0, 2)) + triangle(row.slice(2)));
+    for (let i = 0; i < arr.length - 1; i++) {
+      newString += triangle(row.slice(i, i + 2));
+    }
+    return triangle(newString);
   }
 }
 
