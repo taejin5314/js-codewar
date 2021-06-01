@@ -32,7 +32,7 @@ function expand(expr) {
       if (i !== 0) {
         const temp = Math.pow(a, i) * Math.pow(b, n - i) * combinations(n, i)
         if (i !== n && temp > 0) result += '+' + temp;
-        else if (i === n) result += temp;
+        else if (i === n && temp !== 1) result += temp;
         else if (temp < 0) result += temp;
         else result += '';
         result += (i !== 1) ? x + '^' + i : x;
