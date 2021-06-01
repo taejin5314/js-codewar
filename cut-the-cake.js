@@ -1,8 +1,22 @@
 function cut(cake) {
   //coding and coding..
+  const num = cake.match(/o/g).length;
+  const cake_array = cake.split('\n').map(e => e.split(''));
+  const rows = cake_array.length;
+  const cols = cake_array[0].length;
+  const size = (rows * cols) / num;
 
+  run(cake_array, size, []);
 }
 
+function run(cake, size, slices) {
+  console.log(slices);
+  console.log(stringyfy(cake));
+}
+
+function stringyfy(cake) {
+  return cake.map(e => e.join('')).join('\n');
+}
 
 var cake =
   `........
