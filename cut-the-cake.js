@@ -6,15 +6,11 @@ function cut(cake) {
   const cols = cake_array[0].length;
   const size = (rows * cols) / num;
 
-  run(cake_array, size, []);
+  return run(cake_array, size, []);
 }
 
 function run(cake, size, slices) {
-  console.log(slices);
-  console.log(stringyfy(cake));
-
   const corner = findFirstTopLeftCorner(cake);
-  console.log('Corner', corner);
 
   if (null == corner) return slices;
 
@@ -27,8 +23,21 @@ function run(cake, size, slices) {
 
       const slice = isAValidSlice(cake, x, y, width, height);
       if (!slice) continue;
+
+      const newSlices = Object.assign([], slices);
+      newSlices.push(slice);
+
+      let newCake = doCut(JSON.parse(JSON.stringify(cake)), x, y, width, height);
+
+      let r = run(newCake, size, newSlices);
+
+      if (r.length) {
+        return r;
+      }
     }
   }
+
+  return [];
 }
 
 function stringyfy(cake) {
@@ -46,6 +55,29 @@ function findFirstTopLeftCorner(cake) {
 function isAValidSlice(cake, x, y, width, height) {
   if ((x + width) > cake[0].length) return false;
   if ((y + height) > cake.length) return false;
+
+  const slice = cake.slice(y, y + height).map(e => e.slice(x, x + width));
+  const slice_str = stringyfy(slice);
+
+  if (slice_str.match(/x/)) {
+    return false;
+  }
+
+  const numberOfO = (slice_str.match(/o/g) || []).length;
+  if (numberOfO != 1) {
+    return false;
+  }
+
+  return slice_str;
+}
+
+function doCut(cake, x, y, width, height) {
+  for (let i = y; i < (y + height); i++) {
+    for (let j = x; j < (x + width); j++) {
+      cake[i][j] = 'x';
+    }
+  }
+  return cake;
 }
 
 var cake =
