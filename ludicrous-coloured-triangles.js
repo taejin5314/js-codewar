@@ -1,26 +1,10 @@
 function triangle(row) {
-  let sum = 0;
-  const n = row.length;
-
-
-}
-
-function numToString(i) {
-  switch (i) {
-    case 0: return 'R';
-    case 1: return 'G';
-    case 2: return 'B';
-    default: return '\0';
+  const colors = { "R": 1, "G": 2, "B": 3 }
+  let result = 1;
+  for (elm of row) {
+    result *= colors[elm];
   }
-}
-
-function StringToNum(c) {
-  switch (c) {
-    case 'R': return 0;
-    case 'G': return 1;
-    case 'B': return 2;
-    default: return 3;
-  }
+  return result % 3;
 }
 
 console.log(triangle('B'), 'B');
