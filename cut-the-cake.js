@@ -20,6 +20,15 @@ function run(cake, size, slices) {
 
   let x = corner[1];
   let y = corner[0];
+
+  for (let width = size; width >= 1; width--) {
+    for (let height = 1; height <= size; height++) {
+      if ((height * width) !== size) continue;
+
+      const slice = isAValidSlice(cake, x, y, width, height);
+      if (!slice) continue;
+    }
+  }
 }
 
 function stringyfy(cake) {
@@ -32,6 +41,11 @@ function findFirstTopLeftCorner(cake) {
       if (cake[i][j] !== 'x') return [i, j];
     }
   }
+}
+
+function isAValidSlice(cake, x, y, width, height) {
+  if ((x + width) > cake[0].length) return false;
+  if ((y + height) > cake.length) return false;
 }
 
 var cake =
