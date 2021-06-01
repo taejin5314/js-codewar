@@ -1,10 +1,22 @@
 function triangle(row) {
-  const colors = { "R": 1, "G": 2, "B": 3 }
-  let result = 1;
-  for (elm of row) {
-    result *= colors[elm];
+  while (row.length > 1) {
+    let tempStr = '';
+    for (let i = 0; i < row.length - 1; i++) {
+      tempStr += color(row[i], row[i + 1]);
+    }
+    row = tempStr;
   }
-  return result % 3;
+  return row
+}
+
+function color(c1, c2) {
+  const colors = ['B', 'G', 'R'];
+  if (c1 === c2) {
+    return c1;
+  }
+  else {
+    return colors.filter(c => (c !== c1) && (c !== c2))[0];
+  }
 }
 
 console.log(triangle('B'), 'B');
