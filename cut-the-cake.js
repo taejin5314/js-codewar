@@ -12,10 +12,26 @@ function cut(cake) {
 function run(cake, size, slices) {
   console.log(slices);
   console.log(stringyfy(cake));
+
+  const corner = findFirstTopLeftCorner(cake);
+  console.log('Corner', corner);
+
+  if (null == corner) return slices;
+
+  let x = corner[1];
+  let y = corner[0];
 }
 
 function stringyfy(cake) {
   return cake.map(e => e.join('')).join('\n');
+}
+
+function findFirstTopLeftCorner(cake) {
+  for (let i = 0; i < cake.length; i++) {
+    for (let j = 0; j < cake[i].length; j++) {
+      if (cake[i][j] !== 'x') return [i, j];
+    }
+  }
 }
 
 var cake =
