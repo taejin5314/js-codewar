@@ -30,8 +30,8 @@ function expand(expr) {
 
     for (let i = n; i >= 0; i--) {
       if (i !== 0) {
-        result += Math.pow(a, i) * Math.pow(b, n - i);
-        result += x + '^' + i;
+        result += Math.pow(a, i) * Math.pow(b, n - i) * combinations(i, n - i);
+        result += (i !== 1) ? x + '^' + i : x;
       } else {
         if (Math.pow(b, n - i) > 0) result += '+' + Math.pow(b, n - i);
         else if (b === 0) result += '';
@@ -39,6 +39,25 @@ function expand(expr) {
       }
     }
     console.log(result);
+  }
+}
+
+function product_Range(a, b) {
+  var prd = a, i = a;
+
+  while (i++ < b) {
+    prd *= i;
+  }
+  return prd;
+}
+
+function combinations(n, r) {
+  if (n === r) {
+    return 1;
+  }
+  else {
+    r = (r < n - r) ? n - r : r;
+    return product_Range(r + 1, n) / product_Range(1, n - r);
   }
 }
 
