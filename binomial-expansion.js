@@ -1,5 +1,8 @@
 function expand(expr) {
-
+  const arr = expr.split('^');
+  const n = parseInt(arr[1]);
+  if (n === 0) return '1';
+  else if (n === 1) return arr[0].slice(1, -1);
 }
 
 console.log(expand("(x+1)^0"), "1");
