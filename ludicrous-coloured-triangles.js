@@ -1,22 +1,36 @@
-function triangle(row) {
-  while (row.length > 1) {
-    let tempStr = '';
-    for (let i = 0; i < row.length - 1; i++) {
-      tempStr += color(row[i], row[i + 1]);
-    }
-    row = tempStr;
+const colors = ["R", "G", "B"];
+
+function combineColors(color1, color2) {
+  if (color1 === color2) {
+    return color1;
   }
-  return row
+
+  return colors.find(color => color !== color1 && color !== color2);
 }
 
-function color(c1, c2) {
-  const colors = ['B', 'G', 'R'];
-  if (c1 === c2) {
-    return c1;
+function log3(x) {
+  return Math.log(x) / Math.log(3);
+}
+
+function triangle(row) {
+  const { length } = row;
+
+  if (length === 1) {
+    return row[0];
   }
-  else {
-    return colors.filter(c => (c !== c1) && (c !== c2))[0];
+
+  const n = Math.floor(log3(length - 1));
+  const idealLength = Math.pow(3, n) + 1;
+
+  if (length === idealLength) {
+    return combineColors(row[0], row[length - 1]);
   }
+
+  const size = length - idealLength + 1;
+  const firstColor = triangle(row.substring(0, size));
+  const secondColor = triangle(row.substring(length - size));
+
+  return combineColors(firstColor, secondColor);
 }
 
 console.log(triangle('B'), 'B');
