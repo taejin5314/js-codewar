@@ -1,6 +1,6 @@
-checkRange = (a, x, y) =>
+checkRange = (a, x, y) => a.forEach((num, index) => (num >= x) && (num <= y) ? console.log(index) : index)
 
-  console.log(checkRange([2, 5, 6, 7, 1, 3, 4, 11, 56, 49], 1, 7), 7)
+console.log(checkRange([2, 5, 6, 7, 1, 3, 4, 11, 56, 49], 1, 7), 7)
 console.log(checkRange([2, 5, 6, 7, 1, 3, 4, 11, 56, 49], 3, 5), 3)
 console.log(checkRange([2, 5, 6, 7, 1, 3, 4, 11, 56, 49], 7, 10), 1)
 console.log(checkRange([7, 5, 11, 8, 9, 1, 13, 12, 88], 99, 100), 0)
