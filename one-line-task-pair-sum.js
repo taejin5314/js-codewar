@@ -1,4 +1,4 @@
-sum10 = s => s.split(/(\d\?\?\?\d)/)
+sum10 = s => s.match(/\d\?{3,3}\d/)
 
 console.log(sum10("arrb6???4xxbl5???eee5abc"), true)
 console.log(sum10("abc6? ?4"), false)
