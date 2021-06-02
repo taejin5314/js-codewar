@@ -25,13 +25,12 @@ function expand(expr) {
       const temp = Math.pow(a, i) * Math.pow(b, n - i) * combinations(n, i)
       console.log(temp);
       if (i !== n && temp > 0) result += '+' + temp;
-      else if (i === n && temp !== 1) result += temp;
+      else if (i === n && temp !== 1) result += (temp !== -1) ? temp : '-';
       else if (temp < 0) result += temp;
       else {
-        if (temp === -1) result += '-';
         result += '';
       }
-      result += (i !== 1) ? x + '^' + i : x;
+      result += (i !== 1) ? x + '^' + i : (temp !== 0) ? x : '';
     } else {
       if (Math.pow(b, n - i) > 0) result += '+' + Math.pow(b, n - i);
       else if (b === 0) result += '';
@@ -41,13 +40,12 @@ function expand(expr) {
   return result;
 }
 
-
-
 function factorial(a) {
   let result = 1;
   for (let i = 1; i <= a; i++) result *= i;
   return result;
 }
+
 function combinations(n, r) {
   return factorial(n) / (factorial(r) * factorial(n - r))
 }
