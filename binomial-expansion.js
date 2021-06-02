@@ -23,7 +23,6 @@ function expand(expr) {
   for (let i = n; i >= 0; i--) {
     if (i !== 0) {
       const temp = Math.pow(a, i) * Math.pow(b, n - i) * combinations(n, i)
-      console.log(temp);
       if (i !== n && temp > 0) result += '+' + temp;
       else if (i === n && temp !== 1) result += (temp !== -1) ? temp : '-';
       else if (temp < 0) result += temp;
