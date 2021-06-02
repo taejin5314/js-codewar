@@ -1,5 +1,29 @@
 function conv(num) {
-  //Good luck :)
+  let result = '';
+  if (num.toString().length % 2 === 0) {
+    for (elm of num.toString()) {
+      if (parseInt(elm) % 2 !== 0) result += elm;
+      else 
+    }
+  } else {
+
+  }
+}
+
+function numToChar(n) {
+  switch (n) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 0:
+
+  }
 }
 
 console.log(conv(0), "0")
