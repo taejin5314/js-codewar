@@ -1,4 +1,4 @@
-checkRange = (a, x, y) =>//coding and coding.. shorter and more shorter..  good luck! ;-)
+checkRange = (a, x, y) =>
 
   console.log(checkRange([2, 5, 6, 7, 1, 3, 4, 11, 56, 49], 1, 7), 7)
 console.log(checkRange([2, 5, 6, 7, 1, 3, 4, 11, 56, 49], 3, 5), 3)
