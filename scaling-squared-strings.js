@@ -1,5 +1,5 @@
 function scale(strng, k, n) {
-  // your code
+  let arr = strng.
 }
 
 var a = "abcd\nefgh\nijkl\nmnop";
