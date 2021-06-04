@@ -1,11 +1,13 @@
 function sortVowels(s) {
   //code
   if (typeof s === 'undefined' || typeof s === 'null' || typeof s === 'number') return '';
-  let arr = s.split('');
-  for (elm of arr) {
-    let match = elm.match(/[a-z]|[A-Z]/);
-    console.log(match[0]);
-  }
+  let arrays = s.split('');
+  let newArr = '';
+  arrays.map((elm) => {
+    console.log(elm)
+    console.log(elm.match(/\[a-z][A-Z]/));
+
+  })
 }
 
 console.log(sortVowels('Codewars'), 'C|\n|o\nd|\n|e\nw|\n|a\nr|\ns|');
