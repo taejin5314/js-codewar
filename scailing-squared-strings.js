@@ -1,6 +1,15 @@
 function scale(strng, k, n) {
-  let arr = strng.
+  let arr = strng.split('\n'), newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    let newString = ''
+    for (let j = 0; j < arr[i].length; j++) {
+      newString += arr[i][j].repeat(k);
+    }
+    newArr.push((newString + '\n').repeat(n));
+  }
+  return newArr.join('');
 }
+
 var a = "abcd\nefgh\nijkl\nmnop";
 var r = "aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp";
 console.log(scale(a, 2, 3), r);
