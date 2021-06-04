@@ -5,9 +5,10 @@ function scale(strng, k, n) {
     for (let j = 0; j < arr[i].length; j++) {
       newString += arr[i][j].repeat(k);
     }
-    newArr.push((newString + '\n').repeat(n));
+    if (newString !== '') newString += '\n'
+    newArr.push((newString).repeat(n));
   }
-  return newArr.join('');
+  return newArr.join('').slice(0, -1);
 }
 
 var a = "abcd\nefgh\nijkl\nmnop";
