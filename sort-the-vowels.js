@@ -6,7 +6,6 @@ function sortVowels(s) {
   arrays.map((elm) => {
     console.log(elm)
     console.log(elm.match(/\[a-z][A-Z]/));
-
   })
 }
 
