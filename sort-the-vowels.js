@@ -4,10 +4,12 @@ function sortVowels(s) {
   let arrays = s.split('');
   let newArr = '';
   arrays.map((elm) => {
-    console.log(elm)
-    newArr = new elm.match(/\[a-z][A-Z]/);
-    console.log(newArr);
+    if ((/[aeiou]$/i).test(elm)) {
+      newArr += '|' + elm;
+    } else newArr += elm + '|';
+    newArr += '\n';
   })
+  return newArr.slice(0, -1);
 }
 
 console.log(sortVowels('Codewars'), 'C|\n|o\nd|\n|e\nw|\n|a\nr|\ns|');
