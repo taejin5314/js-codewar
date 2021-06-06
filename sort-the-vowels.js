@@ -5,7 +5,8 @@ function sortVowels(s) {
   let newArr = '';
   arrays.map((elm) => {
     console.log(elm)
-    console.log(elm.match(/\[a-z][A-Z]/));
+    newArr = new elm.match(/\[a-z][A-Z]/);
+    console.log(newArr);
   })
 }
 
