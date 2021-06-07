@@ -12,7 +12,7 @@ function encrypt(text, n) {
 }
 
 function decrypt(encryptedText, n) {
-  if (encryptedText === null) return text;
+  if (encryptedText === null) return encryptedText;
   for (let i = 0; i < n; i++) {
     let newStr = '';
     if (encryptedText.length % 2 === 0) {
