@@ -13,9 +13,17 @@ function encrypt(text, n) {
 function decrypt(encryptedText, n) {
   for (let i = 0; i < n; i++) {
     let newStr = '';
-    for (let j = 0; j < Math.floor(encryptedText.length / 2); j++) {
-      newStr += encryptedText[Math.floor(encryptedText.length / 2) + j];
-      newStr += encryptedText[j];
+    if (encryptedText.length % 2 === 0) {
+      for (let j = 0; j < encryptedText.length / 2; j++) {
+        newStr += encryptedText[Math.floor(encryptedText.length / 2) + j];
+        newStr += encryptedText[j];
+      }
+    } else {
+      for (let j = 0; j < Math.floor(encryptedText.length / 2); j++) {
+        newStr += encryptedText[Math.floor(encryptedText.length / 2) + j];
+        newStr += encryptedText[j];
+      }
+      newStr += encryptedText[encryptedText.length - 1];
     }
     encryptedText = newStr;
   }
