@@ -1,6 +1,6 @@
 function sumStrings(a, b) {
-  let A = BigInt(a);
-  let B = BigInt(b);
+  let A = a === '' ? 0 : BigInt(a);
+  let B = b === '' ? 0 : BigInt(b);
   return (A + B).toString();
 }
 
