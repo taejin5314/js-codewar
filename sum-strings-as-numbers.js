@@ -1,7 +1,7 @@
 function sumStrings(a, b) {
-  let A = (a === '' ? 0 : new BigInt(a));
-  let B = (b === '' ? 0 : new BigInt(b));
-  return (A.add(B)).toString();
+  let A = BigInt(a);
+  let B = BigInt(b);
+  return (A + B).toString();
 }
 
 console.log(sumStrings('123', '456'), '579')
