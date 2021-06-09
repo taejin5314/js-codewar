@@ -1,5 +1,5 @@
 function validate(password) {
-  return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.{6,})/.test(password);
+  return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9].{6,}$/.test(password);
 }
 
 console.log(validate('djI38D55'), 'djI38D55 - Expected true');
