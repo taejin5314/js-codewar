@@ -1,5 +1,17 @@
 function hamming(n) {
+  let queues = { 2: [], 3: [], 5: [] };
+  let base;
+  let next_ham = 1;
 
+  while (true) {
+    yield next_ham;
+
+    for (base in queues) { queues[base].push(next_ham * base) }
+
+    next_ham = [queue[0] for each(queue in queues)].reduce(function (min, val) {
+      return Math.min(min, val);
+    })
+  }
 }
 
 console.log(hamming(1) == 1, "hamming(1) should be 1");
