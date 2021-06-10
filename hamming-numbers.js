@@ -8,9 +8,7 @@ function hamming(n) {
 
     for (base in queues) { queues[base].push(next_ham * base) }
 
-    next_ham = [queue[0] for each(queue in queues)].reduce(function (min, val) {
-      return Math.min(min, val);
-    })
+    return Math.min(min, val);
   }
 }
 
