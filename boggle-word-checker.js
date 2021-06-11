@@ -25,7 +25,6 @@ const checkAdjacent = (board, target, i, j) => {
     if (i < board.length - 1 && board[i + 1][j] === target[0]) return checkAdjacent(board, target.slice(1), i + 1, j);
     if ((i < board.length - 1 && j < board[i].length - 1) && board[i + 1][j + 1] === target[0]) return checkAdjacent(board, target.slice(1), i + 1, j + 1);
   }
-  return false;
 }
 
 var testBoard = [
