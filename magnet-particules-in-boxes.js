@@ -1,5 +1,21 @@
 function doubles(maxk, maxn) {
-  // your code
+  let result = 0;
+  for (let i = 1; i <= maxk; i++) {
+    result += u(i, maxn);
+  }
+  return result;
+}
+
+function v(k, n) {
+  return 1 / (k * Math.pow(n + 1, 2 * k));
+}
+
+function u(k, n) {
+  let result = 0;
+  for (let i = 1; i <= n; i++) {
+    result += v(k, i);
+  }
+  return result;
 }
 
 console.log(doubles(1, 10), 0.5580321939764581);
