@@ -47,6 +47,7 @@ function checkWord(board, word) {
 
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
+      direction = [];
       if (startPoint === board[i][j]) {
         direction.push([i, j]);
         checkAdjacent(board, word.slice(1), i, j);
