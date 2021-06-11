@@ -1,4 +1,6 @@
-
+function checkWord(board, word) {
+  // ...
+}
 
 console.log(checkWord(testBoard, "C") == true);
 console.log(checkWord(testBoard, "EAR") == true);
