@@ -1,11 +1,18 @@
 function checkWord(board, word) {
   const startPoint = word[0];
-  let index = 0, valid = true;
+  let index = 0;
 
-  while (valid === true) {
-
+  for (let i = 0; i < board.legnth; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      if (startPoint === board[i][j]) { }
+    }
   }
+
   return startPoint
+}
+
+const checkAdjacent = (board, target, i, j) => {
+
 }
 
 var testBoard = [
