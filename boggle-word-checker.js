@@ -1,6 +1,14 @@
 function checkWord(board, word) {
-  // ...
+  const startPoint = word[0];
+  return startPoint
 }
+
+var testBoard = [
+  ["E", "A", "R", "A"],
+  ["N", "L", "E", "C"],
+  ["I", "A", "I", "S"],
+  ["B", "Y", "O", "R"]
+];
 
 console.log(checkWord(testBoard, "C") == true);
 console.log(checkWord(testBoard, "EAR") == true);
