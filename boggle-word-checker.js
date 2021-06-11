@@ -1,18 +1,30 @@
 function checkWord(board, word) {
   const startPoint = word[0];
-  let index = 0;
+  let result;
 
   for (let i = 0; i < board.legnth; i++) {
     for (let j = 0; j < board[i].length; j++) {
-      if (startPoint === board[i][j]) { }
+      if (startPoint === board[i][j]) {
+        result = checkAdjacent(board, word.slice(1), i, j);
+      }
     }
   }
 
-  return startPoint
+  return result;
 }
 
 const checkAdjacent = (board, target, i, j) => {
-
+  if (target.length === 0) return true;
+  else {
+    if (board[i - 1][j - 1] === target[0]) checkAdjacent(board, target.slice(1), i - 1, j - 1);
+    else if (board[i - 1][j] === target[0]) checkAdjacent(board, target.slice(1), i - 1, j);
+    else if (board[i - 1][j + 1] === target[0]) checkAdjacent(board, target.slice(1), i - 1, j + 1);
+    else if (board[i][j - 1] === target[0]) checkAdjacent(board, target.slice(1), i, j - 1);
+    else if (board[i][j + 1] === target[0]) checkAdjacent(board, target.slice(1), i, j + 1);
+    else if (board[i + 1][j - 1] === target[0]) checkAdjacent(board, target.slice(1), i + 1, j - 1);
+    else if (board[i + 1][j] === target[0]) checkAdjacent(board, target.slice(1), i + 1, j);
+    else if (board[i + 1][j + 1] === target[0]) checkAdjacent(board, target.slice(1), i + 1, j + 1);
+  }
 }
 
 var testBoard = [
