@@ -1,6 +1,7 @@
 const Calculator = function () {
   this.evaluate = string => {
-    console.log(string.split(' '))
+    let arr = string.split(' ')
+
   }
 };
 
