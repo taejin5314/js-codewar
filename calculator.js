@@ -1,6 +1,6 @@
 const Calculator = function () {
   this.evaluate = string => {
-
+    return new Function('return ' + string)();
   }
 };
 
