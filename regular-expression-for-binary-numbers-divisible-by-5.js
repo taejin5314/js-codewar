@@ -1,4 +1,4 @@
-const divisibleByFive = /^0|(101(0)*)$/; // partial solution
+const divisibleByFive = /^0|(101(0)*)$/;
 
 console.log(divisibleByFive.test(''), false);
 
