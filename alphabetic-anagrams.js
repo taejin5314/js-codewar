@@ -1,7 +1,7 @@
 function listPosition(word) {
   let sortedArray = word.split('').sort();
 
-  word.split('').reduce((acc, letter) => {
+  return word.split('').reduce((acc, letter) => {
     const i = sortedArray.indexOf(letter);
     sortedArray.splice(i, 1);
     const newLetters = [...new Set(sortedArray.slice(0, i))]
