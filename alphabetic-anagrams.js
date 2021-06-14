@@ -1,5 +1,14 @@
 function listPosition(word) {
-  return calculateAnagram(word);
+  let sortedArray = word.split('').sort();
+
+  word.split('').reduce((acc, letter) => {
+    const i = sortedArray.indexOf(letter);
+    sortedArray.splice(i, 1);
+    const newLetters = [...new Set(sortedArray.slice(0, i))]
+
+    return (acc + newLetters.reduce((a, l) => a + calculateAnagram(sortedArray.join('').replace(l, letter)), 0))
+  }, 1)
+
 }
 
 function calculateAnagram(word) {
