@@ -1,7 +1,15 @@
 function listPosition(word) {
+  return calculateAnagram(word);
 }
 
-function calculatePermutations(word) {
+function calculateAnagram(word) {
+  const fac = factorial(word.length);
+  const letterMap = letterCount(word);
+  const divider = Object.values(letterMap).reduce((acc, letterCount) =>
+    acc * factorial(letterCount)
+    , 1)
+
+  return fac / divider;
 }
 
 function letterCount(word) {
