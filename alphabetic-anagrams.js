@@ -1,6 +1,5 @@
 function listPosition(word) {
   const sortedLetters = word.split('').sort();
-  return calculatePermutations(word);
   return word.split('').reduce((acc, letter) => {
     const index = sortedLetters.indexOf(letter)
 
