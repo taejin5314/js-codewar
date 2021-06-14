@@ -4,8 +4,8 @@ function dblLinear(n) {
 
   if (dbl[n] !== undefined) return dbl[n];
   while (dbl[n] === undefined) {
-    dbl = !dbl.indexOf(dbl[i] * 2 + 1) ? dbl.push(dbl[i] * 2 + 1) : dbl;
-    dbl = !dbl.indexOf(dbl[i] * 3 + 1) ? dbl.push(dbl[i] * 3 + 1) : dbl;
+    dbl.indexOf(dbl[i] * 2 + 1) === -1 ? dbl.push(dbl[i] * 2 + 1) : dbl;
+    dbl.indexOf(dbl[i] * 3 + 1) === -1 ? dbl.push(dbl[i] * 3 + 1) : dbl;
     i++;
   }
   return dbl[n];
