@@ -1,4 +1,12 @@
 function dblLinear(n) {
+  const dbl = [1];
+
+  if (dbl[n] !== undefined) return dbl[n];
+  while (dbl[n] === undefined) {
+    dbl.push(dbl[n] * 2 + 1);
+    dbl.push(dbl[n] * 3 + 1);
+  }
+  return dbl.sort()[n];
 
 }
 
