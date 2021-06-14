@@ -1,5 +1,6 @@
 function listPosition(word) {
   const sortedLetters = word.split('').sort();
+  return calculatePermutations(word);
   return word.split('').reduce((acc, letter) => {
     const index = sortedLetters.indexOf(letter)
 
@@ -18,7 +19,22 @@ function listPosition(word) {
   }, 1)
 }
 
-function calculatePermutations()
+function calculatePermutations(word) {
+  const f = factorial(word.length).toString();
+
+  const letterCountsMap = getLetterCountsMap(word);
+
+  const dividerF = Object.values(letterCountsMap).reduce((acc, letterCount) => acc * factorial(letterCount), 1)
+
+  return f / dividerF
+}
+
+function getLetterCountsMap(word) {
+  return word.split('').reduce((acc, letter) => {
+    acc[letter] = acc[letter] ? acc[letter] + 1 : 1;
+    return acc;
+  }, {})
+}
 
 function factorial(n) {
   let f = [1, 1]
