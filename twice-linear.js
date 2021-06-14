@@ -7,8 +7,9 @@ function dblLinear(n) {
     dbl.push(dbl[i] * 2 + 1);
     dbl.push(dbl[i] * 3 + 1);
     i++;
+    dbl.sort();
   }
-  return dbl.sort()[n];
+  return dbl[n];
 
 }
 
