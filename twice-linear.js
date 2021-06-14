@@ -8,7 +8,8 @@ function dblLinear(n) {
     dbl.indexOf(dbl[i] * 3 + 1) === -1 ? dbl.push(dbl[i] * 3 + 1) : dbl;
     i++;
   }
-  return dbl.sort()[n];
+  dbl.sort();
+  return dbl[n];
 
 }
 
