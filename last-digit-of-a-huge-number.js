@@ -23,7 +23,10 @@
 // }
 
 function lastDigit(as) {
+  if (as.length === 0) return 1;
+  for (let i = as.length - 1; i >= 0; i--) {
 
+  }
 }
 
 console.log(lastDigit([]), 1);
