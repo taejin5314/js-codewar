@@ -115,3 +115,5 @@ console.log(findPosition("0910"), 2927)
 console.log(findPosition("0991"), 2617)
 console.log(findPosition("09910"), 2617)
 console.log(findPosition("09991"), 35286)
+
+console.log(getTotalLength(9100))
