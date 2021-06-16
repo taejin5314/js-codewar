@@ -22,12 +22,11 @@ function parseNum(num, start, step) {
   else {
     let e1 = num.slice(start);
     let e2 = num.slice(0, start);
-    let commonLength = e1.length + e2.length - step;
+    let commonLength = num.length - step;
 
     let chs = e2.slice(commonLength);
-    // console.log('start: ', start, 'step: ', step, 'e1: ', e1, 'e2: ', e2, 'chs: ', chs, 'common: ', commonLength)
-    if (chs == '9' * chs.length) {
-      e1 += '0' * chs.length;
+    if (chs == '9'.repeat(chs.length)) {
+      e1 += '0'.repeat(chs.length);
       n = parseInt(e1);
     } else {
       e1 = e1 + e2.slice(commonLength);
@@ -43,7 +42,6 @@ function parseNum(num, start, step) {
     let prev = (n - 1).toString();
     tokens.push(prev.slice(prev.length - start));
     lena += start;
-    // console.log('start: ', start, 'n: ', n, 'prev: ', prev, 'tokens: ', tokens, 'lena: ', lena)
   }
 
   let x = n;
@@ -57,16 +55,11 @@ function parseNum(num, start, step) {
       tokens.push(stra);
       lena += stra.length;
     }
-    // console.log('x: ', x, 'stra: ', stra, 'tokens: ', tokens, 'lena: ', lena)
     x++;
   }
 
-  // console.log(tokens.join(''));
   if (tokens.join('') == num) {
-    console.log('n: ', n)
-    // console.log('tokens: ', tokens)
     let total = getTotalLength(n);
-    // console.log(total, start)
     return total - start;
   } else return -1;
 }
