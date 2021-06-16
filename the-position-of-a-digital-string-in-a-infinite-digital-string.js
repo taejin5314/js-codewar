@@ -3,15 +3,31 @@ function findPosition(num) {
   return makeString(numLength);
 }
 
-function makeString(length) {
-  const max = Math.pow(10, length);
-  let str = '';
+function parseNum(num, start, step) {
+  if (start + step <= num.length) let n = parseInt(num.slice(start, start + step));
+  else {
+    let e1 = num.slice(start);
+    let e2 = num.slice(0, start);
+    let commonLength = e1.length + e2.length - step;
 
-  for (let i = 1; i <= max; i++) str += i;
+    let chs = e2.slice(common);
+    if (chs === '9' * chs.length) {
+      e1 += '0' * chs.length;
+      let n = parseInt(e1);
+    } else {
+      e1 = e1 + e2.slice(common);
+      let n = parseInt(e1) + 1;
+    }
+    if ((n - 1).toString().slice(step - e2.length) !== e2) return -1;
+  }
 
-  return str;
+  const tokens = [];
+  let lena = 0;
+
+  if (start) {
+    let prev = 
+  }
 }
-
 console.log(findPosition("456"), 3, "...3456...")
 console.log(findPosition("454"), 79, "...444546...")
 console.log(findPosition("455"), 98, "...545556...")
