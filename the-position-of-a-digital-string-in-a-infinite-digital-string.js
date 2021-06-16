@@ -1,9 +1,10 @@
 function findPosition(num) {
   const indexes = [];
+  let index;
 
   for (let step = 0; step < num.length + 1; step++) {
     for (let start = 0; start < step; start++) {
-      let index = parseNum(num, start, step);
+      index = parseNum(num, start, step);
       if (index >= 0) indexes.push(index);
     }
   }
