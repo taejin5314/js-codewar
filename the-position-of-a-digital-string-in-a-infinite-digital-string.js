@@ -1,22 +1,32 @@
 function findPosition(num) {
-  const numLength = num.length;
-  return makeString(numLength);
+  const indexes = [];
+
+  for (let step = 0; step < num.length + 1; step++) {
+    for (let start = 0; start < step; start++) {
+      let index = parseNum(num, start, step);
+      if (index >= 0) indexes.push(index);
+    }
+  }
+
+  if (!indexes.length) return parseInt(getTotalLength(parseInt('1' + num)) + 1);
+  return parseInt(Math.min(indexes))
 }
 
 function parseNum(num, start, step) {
-  if (start + step <= num.length) let n = parseInt(num.slice(start, start + step));
+  let n;
+  if (start + step <= num.length) n = parseInt(num.slice(start, start + step));
   else {
     let e1 = num.slice(start);
     let e2 = num.slice(0, start);
     let commonLength = e1.length + e2.length - step;
 
-    let chs = e2.slice(common);
+    let chs = e2.slice(commonLength);
     if (chs === '9' * chs.length) {
       e1 += '0' * chs.length;
-      let n = parseInt(e1);
+      n = parseInt(e1);
     } else {
-      e1 = e1 + e2.slice(common);
-      let n = parseInt(e1) + 1;
+      e1 = e1 + e2.slice(commonLength);
+      n = parseInt(e1) + 1;
     }
     if ((n - 1).toString().slice(step - e2.length) !== e2) return -1;
   }
@@ -39,7 +49,7 @@ function parseNum(num, start, step) {
       lena += num.length - lena;
     } else {
       tokens.push(stra);
-      len += stra.length;
+      lena += stra.length;
     }
     x += 1;
   }
@@ -51,7 +61,16 @@ function parseNum(num, start, step) {
 }
 
 function getTotalLength(n) {
+  let total = 0, lena = 1, x = 10;
 
+  while (n > x) {
+    total += lena * (x - x / 10);
+    x *= 10;
+    lena += 1;
+  }
+
+  total += lena * (n - x / 10);
+  return total;
 }
 
 console.log(findPosition("456"), 3, "...3456...")
