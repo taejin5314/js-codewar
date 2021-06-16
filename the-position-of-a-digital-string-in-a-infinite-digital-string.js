@@ -15,10 +15,10 @@ function findPosition(num) {
 
 function parseNum(num, start, step) {
   let n;
-  if (start + step <= num.length) n = parseInt(num.slice(start, start + step));
+  if (start + step <= num.length) n = parseInt(num.slice(start, start + step - 1));
   else {
     let e1 = num.slice(start);
-    let e2 = num.slice(0, start);
+    let e2 = num.slice(0, start - 1);
     let commonLength = e1.length + e2.length - step;
 
     let chs = e2.slice(commonLength);
@@ -45,8 +45,8 @@ function parseNum(num, start, step) {
 
   while (lena < num.length) {
     let stra = x.toString();
-    if (start.length + lena > num.length) {
-      tokens.push(stra.slice(0, num.length - lena));
+    if (stra.length + lena > num.length) {
+      tokens.push(stra.slice(0, num.length - lena - 1));
       lena += num.length - lena;
     } else {
       tokens.push(stra);
