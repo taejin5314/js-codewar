@@ -22,14 +22,14 @@ function parseNum(num, start, step) {
     let commonLength = e1.length + e2.length - step;
 
     let chs = e2.slice(commonLength);
-    if (chs === '9' * chs.length) {
+    if (chs == '9' * chs.length) {
       e1 += '0' * chs.length;
       n = parseInt(e1);
     } else {
       e1 = e1 + e2.slice(commonLength);
       n = parseInt(e1) + 1;
     }
-    if ((n - 1).toString().slice(step - e2.length) !== e2) return -1;
+    if ((n - 1).toString().slice(step - e2.length) != e2) return -1;
   }
 
   const tokens = [];
