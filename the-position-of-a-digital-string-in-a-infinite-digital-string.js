@@ -57,7 +57,7 @@ function parseNum(num, start, step) {
       lena += stra.length;
     }
     // console.log('x: ', x, 'stra: ', stra, 'tokens: ', tokens, 'lena: ', lena)
-    x += 1;
+    x++;
   }
 
   // console.log(tokens.join(''));
