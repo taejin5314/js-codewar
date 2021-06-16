@@ -25,9 +25,35 @@ function parseNum(num, start, step) {
   let lena = 0;
 
   if (start) {
-    let prev = 
+    let prev = (n - 1).toString();
+    tokens.push(prev.slice(prev.length - start));
+    lena += start;
   }
+
+  let x = n;
+
+  while (lena < num.length) {
+    let stra = x.toString();
+    if (start.length + lena > num.length) {
+      tokens.push(stra.slice(0, num.length - lena));
+      lena += num.length - lena;
+    } else {
+      tokens.push(stra);
+      len += stra.length;
+    }
+    x += 1;
+  }
+
+  if (tokens.join('') === num) {
+    let total = getTotalLength(n);
+    return total - start;
+  } else return -1;
 }
+
+function getTotalLength(n) {
+
+}
+
 console.log(findPosition("456"), 3, "...3456...")
 console.log(findPosition("454"), 79, "...444546...")
 console.log(findPosition("455"), 98, "...545556...")
