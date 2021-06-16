@@ -8,7 +8,7 @@ function findPosition(num) {
     }
   }
 
-  if (!indexes) return getTotalLength(parseInt('1' + num)) + 1;
+  if (indexes.length === 0) return getTotalLength(parseInt('1' + num)) + 1;
 
   return Math.min(indexes);
 }
