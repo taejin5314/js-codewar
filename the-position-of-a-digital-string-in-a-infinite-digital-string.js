@@ -15,7 +15,9 @@ function findPosition(num) {
 
 function parseNum(num, start, step) {
   let n;
-  if (start + step <= num.length) n = parseInt(num.slice(start, start + step - 1));
+  if (start + step <= num.length) {
+    n = parseInt(num.slice(start, start + step - 1));
+  }
   else {
     let e1 = num.slice(start);
     let e2 = num.slice(0, start - 1);
