@@ -1,5 +1,15 @@
 function findPosition(num) {
+  const numLength = num.length;
+  return makeString(numLength);
+}
 
+function makeString(length) {
+  const max = Math.pow(10, length);
+  let str = '';
+
+  for (let i = 1; i <= max; i++) str += i;
+
+  return str;
 }
 
 console.log(findPosition("456"), 3, "...3456...")
