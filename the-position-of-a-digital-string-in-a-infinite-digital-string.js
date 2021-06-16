@@ -10,13 +10,13 @@ function findPosition(num) {
 
   if (indexes.length === 0) return getTotalLength(parseInt('1' + num)) + 1;
 
-  return Math.min(indexes);
+  return Math.min.apply(null, indexes);
 }
 
 function parseNum(num, start, step) {
   let n;
   if (start + step <= num.length) {
-    n = parseInt(num.slice(start, start + step - 1));
+    n = parseInt(num.slice(start, start + step));
   }
   else {
     let e1 = num.slice(start);
@@ -50,7 +50,7 @@ function parseNum(num, start, step) {
   while (lena < num.length) {
     let stra = x.toString();
     if (stra.length + lena > num.length) {
-      tokens.push(stra.slice(0, num.length - lena - 1));
+      tokens.push(stra.slice(0, num.length - lena));
       lena += num.length - lena;
     } else {
       tokens.push(stra);
@@ -60,8 +60,12 @@ function parseNum(num, start, step) {
     x += 1;
   }
 
+  // console.log(tokens.join(''));
   if (tokens.join('') == num) {
+    console.log('n: ', n)
+    // console.log('tokens: ', tokens)
     let total = getTotalLength(n);
+    // console.log(total, start)
     return total - start;
   } else return -1;
 }
