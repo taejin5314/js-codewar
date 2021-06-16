@@ -9,7 +9,8 @@ function findPosition(num) {
   }
 
   if (!indexes.length) return parseInt(getTotalLength(parseInt('1' + num)) + 1);
-  return parseInt(Math.min(indexes))
+
+  return Math.min(indexes);
 }
 
 function parseNum(num, start, step) {
