@@ -1,11 +1,13 @@
 function solve(clues, width, height) {
-  return 0
+  const h_clues = clues[0][0], v_clues = clues[0][1], h = clues[1], v = clues[2];
+  console.log(h, v);
 }
 
 const doTests = (puzzles, desc) => {
   for (let i = 0, len = puzzles.length; i < len; i++) {
     let [args, solution, it_] = puzzles[i];
-    console.log(solve(...args), solution);
+    solve(...args);
+    // console.log(solve(...args), solution);
   }
 };
 
