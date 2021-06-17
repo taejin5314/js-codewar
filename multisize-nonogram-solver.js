@@ -1,6 +1,6 @@
 function solve(clues, width, height) {
-  const h_clues = clues[0][0], v_clues = clues[0][1], h = clues[1], v = clues[2];
-  console.log(h, v);
+  const h_clues = clues[0], v_clues = clues[1], h = clues[2], v = clues[3];
+  console.log(clues);
 }
 
 const doTests = (puzzles, desc) => {
