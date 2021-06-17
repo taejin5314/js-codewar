@@ -1,3 +1,14 @@
+function solve(clues, width, height) {
+  // Finish this
+  return 0
+}
+const doTests = (puzzles, desc) => {
+  for (let i = 0, len = puzzles.length; i < len; i++) {
+    let [args, solution, it_] = puzzles[i];
+    console.log(solve(...args), solution);
+  }
+};
+
 function getPuzzles() {
 
   var v_clues, h_clues, args, ans, t1, t2, t3, tests;
@@ -150,3 +161,5 @@ function getPuzzles() {
     tests = [t1, t2, t3];
   return tests;
 }
+
+doTests(getPuzzles(), 'Sample tests')
