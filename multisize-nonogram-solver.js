@@ -1,7 +1,7 @@
 function solve(clues, width, height) {
-  // Finish this
   return 0
 }
+
 const doTests = (puzzles, desc) => {
   for (let i = 0, len = puzzles.length; i < len; i++) {
     let [args, solution, it_] = puzzles[i];
