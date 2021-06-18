@@ -1,4 +1,4 @@
-checkRange = (a, x, y) => a.reduce((acc, cur) => cur >= x && cur <= y ? acc.concat(cur) : acc, []).length
+checkRange = (a, x, y) => a.map((b, c))
 
 console.log(checkRange([2, 5, 6, 7, 1, 3, 4, 11, 56, 49], 1, 7), 7)
 console.log(checkRange([2, 5, 6, 7, 1, 3, 4, 11, 56, 49], 3, 5), 3)
