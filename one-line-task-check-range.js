@@ -1,4 +1,5 @@
-checkRange = (a, x, y) => a.map(n => b += n >= x & n <= y, b = 0) | b
+checkRange = (a, x, y) => a.map(n => n < x
+  | n > y || b++, b = 0) | b
 
 console.log(checkRange([2, 5, 6, 7, 1, 3, 4, 11, 56, 49], 1, 7), 7)
 console.log(checkRange([2, 5, 6, 7, 1, 3, 4, 11, 56, 49], 3, 5), 3)
