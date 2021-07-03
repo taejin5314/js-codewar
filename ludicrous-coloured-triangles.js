@@ -12,7 +12,6 @@ function triangle(row) {
   const size = triangleLength - max + 1;
   const firstColor = triangle(row.substring(0, size));
   const secondColor = triangle(row.substring(triangleLength - size));
-
   return colorCheck(firstColor, secondColor);
 }
 
