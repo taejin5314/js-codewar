@@ -21,9 +21,9 @@ function determinant(m) {
   }
 };
 
-m1 = [[1, 3], [2, 5]]
-m2 = [[2, 5, 3], [1, -2, -1], [1, 3, 4]]
+m1 = [[1, 3], [2, 5]];
+m2 = [[2, 5, 3], [1, -2, -1], [1, 3, 4]];
 
-console.log(determinant([[1]]), 1)
-console.log(determinant(m1), -1)
-console.log(determinant(m2), -20)
+console.log(determinant([[1]]), 1);
+console.log(determinant(m1), -1);
+console.log(determinant(m2), -20);
